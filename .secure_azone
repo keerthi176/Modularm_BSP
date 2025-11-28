@@ -16,6 +16,7 @@
             <slot name="P400.CM33" secure="true"/>
             <slot name="P401.CM33" secure="true"/>
         </peripheral>
+        <peripheral name="RTC.CM33" security="s"/>
         <peripheral name="CANFD0.CM33" group="CANFD" security="s"/>
         <peripheral name="SCI0.CM33" group="SCI" security="s"/>
         <peripheral name="IIC0.CM33" group="IIC" security="s"/>
@@ -33,6 +34,7 @@
             <slot name="IRQ10.CM33" secure="true"/>
             <slot name="IRQ11.CM33" secure="true"/>
             <slot name="IRQ12.CM33" secure="true"/>
+            <slot name="IRQ13.CM33" secure="true"/>
         </peripheral>
     </partition>
 </azone>
