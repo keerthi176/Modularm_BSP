@@ -1,7 +1,12 @@
-ra_gen/hal_data.o: ../ra_gen/hal_data.c ../ra_gen/hal_data.h \
+ra/fsp/src/rm_vee_flash/rm_vee_flash.o: \
+ ../ra/fsp/src/rm_vee_flash/rm_vee_flash.c \
+ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/rm_vee_flash_cfg.h \
+ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/rm_vee_flash.h \
+ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/rm_vee_api.h \
  D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/bsp_api.h \
  D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/fsp_common_api.h \
  D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/fsp_version.h \
+ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/bsp_api.h \
  D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/bsp/bsp_cfg.h \
  D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_gen/bsp_clock_cfg.h \
  D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/bsp/bsp_mcu_family_cfg.h \
@@ -46,45 +51,14 @@ ra_gen/hal_data.o: ../ra_gen/hal_data.c ../ra_gen/hal_data.h \
  D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/src/bsp/mcu/all/bsp_compiler_support.h \
  D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/src/bsp/mcu/all/bsp_delay.h \
  D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/src/bsp/mcu/all/bsp_mcu_api.h \
- ../ra_gen/common_data.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/rm_comms_i2c.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/rm_comms_api.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/bsp_api.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_i2c_master_api.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_transfer_api.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/rm_comms_i2c_cfg.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/FreeRTOS.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/aws/FreeRTOSConfig.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/projdefs.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/portable.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/deprecated_definitions.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/src/rm_freertos_port/portmacro.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/mpu_wrappers.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/projdefs.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/mpu_wrappers.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/task.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/list.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/queue.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/task.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/semphr.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/queue.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/r_ioport.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_ioport_api.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/r_ioport_cfg.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/bsp/bsp_pin_cfg.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/r_flash_hp.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_flash_api.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/r_flash_hp_cfg.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/rm_vee_flash.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/rm_vee_api.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/rm_vee_flash_cfg.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/r_rtc.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/r_rtc_cfg.h \
- D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_rtc_api.h
-../ra_gen/hal_data.h:
+ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_flash_api.h
+D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/rm_vee_flash_cfg.h:
+D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/rm_vee_flash.h:
+D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/rm_vee_api.h:
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/bsp_api.h:
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/fsp_common_api.h:
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/fsp_version.h:
+D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/bsp_api.h:
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/bsp/bsp_cfg.h:
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_gen/bsp_clock_cfg.h:
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/bsp/bsp_mcu_family_cfg.h:
@@ -129,38 +103,4 @@ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/fsp_common_api.
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/src/bsp/mcu/all/bsp_compiler_support.h:
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/src/bsp/mcu/all/bsp_delay.h:
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/src/bsp/mcu/all/bsp_mcu_api.h:
-../ra_gen/common_data.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/rm_comms_i2c.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/rm_comms_api.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/bsp_api.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_i2c_master_api.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_transfer_api.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/rm_comms_i2c_cfg.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/FreeRTOS.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/aws/FreeRTOSConfig.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/projdefs.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/portable.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/deprecated_definitions.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/src/rm_freertos_port/portmacro.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/mpu_wrappers.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/projdefs.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/mpu_wrappers.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/task.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/list.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/queue.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/task.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/semphr.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/aws/FreeRTOS/FreeRTOS/Source/include/queue.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/r_ioport.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_ioport_api.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/r_ioport_cfg.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/bsp/bsp_pin_cfg.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/r_flash_hp.h:
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_flash_api.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/r_flash_hp_cfg.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/rm_vee_flash.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/rm_vee_api.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/rm_vee_flash_cfg.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/r_rtc.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/r_rtc_cfg.h:
-D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_rtc_api.h:

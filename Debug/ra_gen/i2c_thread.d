@@ -72,6 +72,15 @@ ra_gen/i2c_thread.o: ../ra_gen/i2c_thread.c ../ra_gen/i2c_thread.h \
  D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_ioport_api.h \
  D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/r_ioport_cfg.h \
  D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/bsp/bsp_pin_cfg.h \
+ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/r_flash_hp.h \
+ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_flash_api.h \
+ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/r_flash_hp_cfg.h \
+ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/rm_vee_flash.h \
+ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/rm_vee_api.h \
+ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/rm_vee_flash_cfg.h \
+ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/r_rtc.h \
+ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/r_rtc_cfg.h \
+ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_rtc_api.h \
  D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/r_iic_master.h \
  D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/r_iic_master_cfg.h
 ../ra_gen/i2c_thread.h:
@@ -149,5 +158,14 @@ D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/r_ioport.
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_ioport_api.h:
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/r_ioport_cfg.h:
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/bsp/bsp_pin_cfg.h:
+D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/r_flash_hp.h:
+D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_flash_api.h:
+D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/r_flash_hp_cfg.h:
+D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/rm_vee_flash.h:
+D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/rm_vee_api.h:
+D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/rm_vee_flash_cfg.h:
+D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/r_rtc.h:
+D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/r_rtc_cfg.h:
+D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/api/r_rtc_api.h:
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra/fsp/inc/instances/r_iic_master.h:
 D:/ModularmProject/Modularm_new_repo/Modularm_BSP/ra_cfg/fsp_cfg/r_iic_master_cfg.h:

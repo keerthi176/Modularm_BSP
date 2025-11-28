@@ -2,4 +2,5 @@ collapse/module.driver.comms_i2c_on_comms_i2c_bus.1267357344=false
 collapse/module.driver.comms_i2c_on_comms_i2c_device.1150090211=false
 collapse/module.driver.i2c_on_iic_master.1828628691=false
 collapse/module.driver.uart_on_sci_uart.1739865099=false
+collapse/module.middleware.rm_vee_flash.1851597427=false
 eclipse.preferences.version=1
