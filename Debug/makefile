@@ -13,8 +13,9 @@ RM := rm -rf
 -include src/subdir.mk
 -include ra_gen/subdir.mk
 -include ra/fsp/src/rm_freertos_port/subdir.mk
+-include ra/fsp/src/r_sci_uart/subdir.mk
 -include ra/fsp/src/r_ioport/subdir.mk
--include ra/fsp/src/r_icu/subdir.mk
+-include ra/fsp/src/r_canfd/subdir.mk
 -include ra/fsp/src/bsp/mcu/ra6m5/subdir.mk
 -include ra/fsp/src/bsp/mcu/all/subdir.mk
 -include ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/subdir.mk
@@ -94,7 +95,7 @@ all: Modularm_BSP.elf secondary-outputs
 
 # Tool invocations
 Modularm_BSP.elf: $(OBJS) $(USER_OBJS) $(LINKER_SCRIPT)
-	$(file > Modularm_BSP.elf.in,-mcpu=cortex-m33 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -O2 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-strict-aliasing -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal -g -T "fsp.ld" -Xlinker --gc-sections -L "D:\\ModularmProject\\E2_Studio_Workspace\\Modularm_BSP_2/script" -Wl,-Map,"Modularm_BSP.map" --specs=nano.specs -o "Modularm_BSP.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group)
+	$(file > Modularm_BSP.elf.in,-mcpu=cortex-m33 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -O2 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-strict-aliasing -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal -g -T "fsp.ld" -Xlinker --gc-sections -L "D:\\ModularmProject\\Modularm_new_repo\\Modularm_BSP/script" -Wl,-Map,"Modularm_BSP.map" --specs=nano.specs -o "Modularm_BSP.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group)
 	@echo Building target: $@ && arm-none-eabi-gcc @"Modularm_BSP.elf.in"
 Modularm_BSP.srec: Modularm_BSP.elf
 	arm-none-eabi-objcopy -O srec "Modularm_BSP.elf"  "Modularm_BSP.srec"
