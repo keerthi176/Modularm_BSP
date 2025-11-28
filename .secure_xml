@@ -72,6 +72,15 @@
       <configSetting altId="debug0.swdio.p108" configurationId="debug0.swdio" isUsedByDriver="true" peripheral="DEBUG0"/>
       <configSetting altId="iic0.scl.p400" configurationId="iic0.scl" isUsedByDriver="true" peripheral="IIC0"/>
       <configSetting altId="iic0.sda.p401" configurationId="iic0.sda" isUsedByDriver="true" peripheral="IIC0"/>
+      <configSetting altId="p002.output.low" configurationId="p002"/>
+      <configSetting altId="p004.output.low" configurationId="p004"/>
+      <configSetting altId="p005.output.low" configurationId="p005"/>
+      <configSetting altId="p006.output.low" configurationId="p006"/>
+      <configSetting altId="p008.output.low" configurationId="p008"/>
+      <configSetting altId="p205.input" configurationId="p205"/>
+      <configSetting altId="p206.input" configurationId="p206"/>
+      <configSetting altId="p212.input" configurationId="p212"/>
+      <configSetting altId="p213.input" configurationId="p213"/>
       <configSetting altId="sci0.rxd.p100" configurationId="sci0.rxd" isUsedByDriver="true" peripheral="SCI0"/>
       <configSetting altId="sci0.txd.p101" configurationId="sci0.txd" isUsedByDriver="true" peripheral="SCI0"/>
     </pincfg>

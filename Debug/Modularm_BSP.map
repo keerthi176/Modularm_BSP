@@ -171,15 +171,25 @@ Discarded input sections
  .text          0x00000000        0x0 ./ra_gen/uart_thread.o
  .data          0x00000000        0x0 ./ra_gen/uart_thread.o
  .bss           0x00000000        0x0 ./ra_gen/uart_thread.o
- .rodata.g_uart0
+ .rodata.RS485_thread
                 0x00000000        0xc ./ra_gen/uart_thread.o
- .rodata.g_uart0_cfg
+ .rodata.RS485_thread_cfg
                 0x00000000       0x20 ./ra_gen/uart_thread.o
- .rodata.g_uart0_cfg_extend
+ .rodata.RS485_thread_cfg_extend
                 0x00000000       0x14 ./ra_gen/uart_thread.o
- .data.g_uart0_baud_setting
+ .data.RS485_thread_baud_setting
                 0x00000000        0x4 ./ra_gen/uart_thread.o
- .bss.g_uart0_ctrl
+ .bss.RS485_thread_ctrl
+                0x00000000       0x30 ./ra_gen/uart_thread.o
+ .rodata.RS232_thread
+                0x00000000        0xc ./ra_gen/uart_thread.o
+ .rodata.RS232_thread_cfg
+                0x00000000       0x20 ./ra_gen/uart_thread.o
+ .rodata.RS232_thread_cfg_extend
+                0x00000000       0x14 ./ra_gen/uart_thread.o
+ .data.RS232_thread_baud_setting
+                0x00000000        0x4 ./ra_gen/uart_thread.o
+ .bss.RS232_thread_ctrl
                 0x00000000       0x30 ./ra_gen/uart_thread.o
  .text          0x00000000        0x0 ./ra_gen/vector_data.o
  .data          0x00000000        0x0 ./ra_gen/vector_data.o
@@ -1910,7 +1920,7 @@ __ram_thread_stack$$
                 0x20002000                        __ddsc_RAM_NSC = .
 
 __flash_readonly$$
-                0x00000080     0x420c
+                0x00000080     0x4254
                 0x00000080                        __flash_readonly$$Base = .
  *(.flash)
  *(.flash_code)
@@ -2269,183 +2279,183 @@ __flash_readonly$$
                 0x00003e90        0xc ./ra_gen/pin_data.o
                 0x00003e90                g_bsp_pin_cfg
  .rodata.g_bsp_pin_cfg_data
-                0x00003e9c       0x40 ./ra_gen/pin_data.o
+                0x00003e9c       0x88 ./ra_gen/pin_data.o
                 0x00003e9c                g_bsp_pin_cfg_data
  .rodata.uart_thread_create.str1.4
-                0x00003edc        0xc ./ra_gen/uart_thread.o
+                0x00003f24        0xc ./ra_gen/uart_thread.o
  .rodata.uart_thread_parameters
-                0x00003edc        0x4 ./ra_gen/uart_thread.o
-                0x00003edc                uart_thread_parameters
+                0x00003f24        0x4 ./ra_gen/uart_thread.o
+                0x00003f24                uart_thread_parameters
  .rodata.g_interrupt_event_link_select
-                0x00003ee0       0x20 ./ra_gen/vector_data.o
-                0x00003ee0                g_interrupt_event_link_select
+                0x00003f28       0x20 ./ra_gen/vector_data.o
+                0x00003f28                g_interrupt_event_link_select
  .rodata.vPortSVCHandler_C.str1.4
-                0x00003f00       0x3a ./ra/fsp/src/rm_freertos_port/port.o
+                0x00003f48       0x3a ./ra/fsp/src/rm_freertos_port/port.o
  .rodata.vPortEnterCritical.str1.4
-                0x00003f00       0x46 ./ra/fsp/src/rm_freertos_port/port.o
+                0x00003f48       0x46 ./ra/fsp/src/rm_freertos_port/port.o
  .rodata.vPortExitCritical.str1.4
-                0x00003f00       0x12 ./ra/fsp/src/rm_freertos_port/port.o
+                0x00003f48       0x12 ./ra/fsp/src/rm_freertos_port/port.o
  .rodata.__func__.1
-                0x00003f00       0x12 ./ra/fsp/src/rm_freertos_port/port.o
- *fill*         0x00003f12        0x2 
+                0x00003f48       0x12 ./ra/fsp/src/rm_freertos_port/port.o
+ *fill*         0x00003f5a        0x2 
  .rodata.__func__.2
-                0x00003f14       0x13 ./ra/fsp/src/rm_freertos_port/port.o
- *fill*         0x00003f27        0x1 
+                0x00003f5c       0x13 ./ra/fsp/src/rm_freertos_port/port.o
+ *fill*         0x00003f6f        0x1 
  .rodata.__func__.3
-                0x00003f28       0x12 ./ra/fsp/src/rm_freertos_port/port.o
- *fill*         0x00003f3a        0x2 
+                0x00003f70       0x12 ./ra/fsp/src/rm_freertos_port/port.o
+ *fill*         0x00003f82        0x2 
  .rodata.g_vbatt_pins_input
-                0x00003f3c        0x6 ./ra/fsp/src/r_ioport/r_ioport.o
- *fill*         0x00003f42        0x2 
+                0x00003f84        0x6 ./ra/fsp/src/r_ioport/r_ioport.o
+ *fill*         0x00003f8a        0x2 
  .rodata.dlc_to_bytes
-                0x00003f44       0x10 ./ra/fsp/src/r_canfd/r_canfd.o
+                0x00003f8c       0x10 ./ra/fsp/src/r_canfd/r_canfd.o
  .rodata.g_init_info
-                0x00003f54       0x18 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
-                0x00003f54                g_init_info
+                0x00003f9c       0x18 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
+                0x00003f9c                g_init_info
  .rodata.nocache_list
-                0x00003f6c       0x10 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
+                0x00003fb4       0x10 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
  .rodata.copy_list
-                0x00003f7c       0x80 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
+                0x00003fc4       0x80 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
  .rodata.zero_list
-                0x00003ffc       0x30 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
+                0x00004044       0x30 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
  .rodata.g_prcr_masks
-                0x0000402c        0xa ./ra/fsp/src/bsp/mcu/all/bsp_register_protection.o
+                0x00004074        0xa ./ra/fsp/src/bsp/mcu/all/bsp_register_protection.o
  .rodata.vQueueUnregisterQueue.part.0.str1.4
-                0x00004036       0x33 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+                0x0000407e       0x33 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
  .rodata.xQueueGenericReset.str1.4
-                0x00004036       0x2c ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+                0x0000407e       0x2c ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
  .rodata.xQueueGenericCreateStatic.str1.4
-                0x00004036       0x37 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+                0x0000407e       0x37 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
  .rodata.xQueueCreateCountingSemaphoreStatic.str1.4
-                0x00004036        0x8 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+                0x0000407e        0x8 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
  .rodata.xQueueGenericSend.str1.4
-                0x00004036       0xfb ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+                0x0000407e       0xfb ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
  .rodata.xQueueGiveFromISR.str1.4
-                0x00004036       0x7d ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+                0x0000407e       0x7d ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
  .rodata.xQueueReceive.str1.4
-                0x00004036       0x66 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
- *fill*         0x00004036        0x2 
+                0x0000407e       0x66 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+ *fill*         0x0000407e        0x2 
  .rodata.__func__.2
-                0x00004038       0x14 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+                0x00004080       0x14 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
  .rodata.__func__.12
-                0x0000404c       0x14 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+                0x00004094       0x14 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
  .rodata.__func__.13
-                0x00004060        0xe ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
- *fill*         0x0000406e        0x2 
+                0x000040a8        0xe ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+ *fill*         0x000040b6        0x2 
  .rodata.__func__.16
-                0x00004070       0x12 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
- *fill*         0x00004082        0x2 
+                0x000040b8       0x12 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+ *fill*         0x000040ca        0x2 
  .rodata.__func__.17
-                0x00004084       0x24 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+                0x000040cc       0x24 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
  .rodata.__func__.21
-                0x000040a8       0x1a ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
- *fill*         0x000040c2        0x2 
+                0x000040f0       0x1a ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+ *fill*         0x0000410a        0x2 
  .rodata.__func__.22
-                0x000040c4       0x13 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+                0x0000410c       0x13 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
  .rodata.prvTaskIsTaskSuspended.part.0.str1.4
-                0x000040d7       0x33 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x0000411f       0x33 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.xTaskIncrementTick.part.0.str1.4
-                0x000040d7       0x76 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x0000411f       0x76 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.xTaskCreateStatic.str1.4
-                0x000040d7       0x69 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x0000411f       0x69 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.vTaskStartScheduler.str1.4
-                0x000040d7       0x12 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x0000411f       0x12 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.xTaskResumeAll.str1.4
-                0x000040d7       0x1b ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x0000411f       0x1b ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.xTaskDelayUntil.str1.4
-                0x000040d7       0x47 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x0000411f       0x47 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.vTaskSwitchContext.str1.4
-                0x000040d7        0xe ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x0000411f        0xe ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.vTaskPlaceOnEventList.str1.4
-                0x000040d7        0xc ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x0000411f        0xc ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.xTaskRemoveFromEventList.str1.4
-                0x000040d7        0xf ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x0000411f        0xf ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.vTaskSetTimeOutState.str1.4
-                0x000040d7        0xa ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x0000411f        0xa ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.xTaskCheckForTimeOut.str1.4
-                0x000040d7        0xe ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x0000411f        0xe ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.xTaskPriorityDisinherit.str1.4
-                0x000040d7       0x2d ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x0000411f       0x2d ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.vTaskPriorityDisinheritAfterTimeout.str1.4
-                0x000040d7       0x16 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
- *fill*         0x000040d7        0x1 
+                0x0000411f       0x16 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+ *fill*         0x0000411f        0x1 
  .rodata.__func__.7
-                0x000040d8       0x24 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x00004120       0x24 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.__func__.8
-                0x000040fc       0x18 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x00004144       0x18 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.__func__.10
-                0x00004114       0x15 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
- *fill*         0x00004129        0x3 
+                0x0000415c       0x15 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+ *fill*         0x00004171        0x3 
  .rodata.__func__.13
-                0x0000412c       0x19 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
- *fill*         0x00004145        0x3 
+                0x00004174       0x19 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+ *fill*         0x0000418d        0x3 
  .rodata.__func__.14
-                0x00004148       0x20 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x00004190       0x20 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.__func__.16
-                0x00004168       0x16 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
- *fill*         0x0000417e        0x2 
+                0x000041b0       0x16 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+ *fill*         0x000041c6        0x2 
  .rodata.__func__.17
-                0x00004180       0x13 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
- *fill*         0x00004193        0x1 
+                0x000041c8       0x13 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+ *fill*         0x000041db        0x1 
  .rodata.__func__.18
-                0x00004194       0x13 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
- *fill*         0x000041a7        0x1 
+                0x000041dc       0x13 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+ *fill*         0x000041ef        0x1 
  .rodata.__func__.22
-                0x000041a8        0xf ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
- *fill*         0x000041b7        0x1 
+                0x000041f0        0xf ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+ *fill*         0x000041ff        0x1 
  .rodata.__func__.23
-                0x000041b8       0x14 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x00004200       0x14 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.__func__.29
-                0x000041cc        0xb ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
- *fill*         0x000041d7        0x1 
+                0x00004214        0xb ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+ *fill*         0x0000421f        0x1 
  .rodata.__func__.32
-                0x000041d8       0x15 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
- *fill*         0x000041ed        0x3 
+                0x00004220       0x15 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+ *fill*         0x00004235        0x3 
  .rodata.__func__.33
-                0x000041f0       0x14 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x00004238       0x14 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.uxTopUsedPriority
-                0x00004204        0x4 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+                0x0000424c        0x4 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .rodata.prvCheckForValidListAndQueue.str1.4
-                0x00004208        0x5 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
+                0x00004250        0x5 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
  .rodata.xTimerGetReloadMode.part.0.str1.4
-                0x00004208       0x34 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
+                0x00004250       0x34 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
  .rodata.prvTimerTask.str1.4
-                0x00004208       0x25 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
+                0x00004250       0x25 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
  .rodata.xTimerCreateTimerTask.str1.4
-                0x00004208       0x10 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
+                0x00004250       0x10 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
  .rodata.__func__.16
-                0x00004208       0x1b ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
- *fill*         0x00004223        0x1 
+                0x00004250       0x1b ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
+ *fill*         0x0000426b        0x1 
  .rodata.__func__.18
-                0x00004224       0x16 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
+                0x0000426c       0x16 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
  *(.mcuboot_sce9_key)
  *(.version)
- *fill*         0x0000423a        0x2 
- .version       0x0000423c       0x50 ./ra/fsp/src/bsp/mcu/all/bsp_common.o
-                0x0000428c                        __flash_readonly$$Limit = .
+ *fill*         0x00004282        0x2 
+ .version       0x00004284       0x50 ./ra/fsp/src/bsp/mcu/all/bsp_common.o
+                0x000042d4                        __flash_readonly$$Limit = .
 
-.glue_7         0x0000428c        0x0
- .glue_7        0x0000428c        0x0 linker stubs
+.glue_7         0x000042d4        0x0
+ .glue_7        0x000042d4        0x0 linker stubs
 
-.glue_7t        0x0000428c        0x0
- .glue_7t       0x0000428c        0x0 linker stubs
+.glue_7t        0x000042d4        0x0
+ .glue_7t       0x000042d4        0x0 linker stubs
 
-.vfp11_veneer   0x0000428c        0x0
- .vfp11_veneer  0x0000428c        0x0 linker stubs
+.vfp11_veneer   0x000042d4        0x0
+ .vfp11_veneer  0x000042d4        0x0 linker stubs
 
-.v4_bx          0x0000428c        0x0
- .v4_bx         0x0000428c        0x0 linker stubs
+.v4_bx          0x000042d4        0x0
+ .v4_bx         0x000042d4        0x0 linker stubs
 
-.init           0x0000428c        0x4
- .init          0x0000428c        0x4 C:/Renesas/RA/e2studio_v2025-10_fsp_v6.2.0/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
-                0x0000428c                _init
+.init           0x000042d4        0x4
+ .init          0x000042d4        0x4 C:/Renesas/RA/e2studio_v2025-10_fsp_v6.2.0/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
+                0x000042d4                _init
 
-.fini           0x00004290        0x4
- .fini          0x00004290        0x4 C:/Renesas/RA/e2studio_v2025-10_fsp_v6.2.0/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
-                0x00004290                _fini
+.fini           0x000042d8        0x4
+ .fini          0x000042d8        0x4 C:/Renesas/RA/e2studio_v2025-10_fsp_v6.2.0/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
+                0x000042d8                _fini
 
-.iplt           0x00004294        0x0
- .iplt          0x00004294        0x0 C:/Renesas/RA/e2studio_v2025-10_fsp_v6.2.0/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+.iplt           0x000042dc        0x0
+ .iplt          0x000042dc        0x0 C:/Renesas/RA/e2studio_v2025-10_fsp_v6.2.0/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
 
 __flash_ctor$$
  *crtbegin.o(.ctors)
@@ -2460,41 +2470,41 @@ __flash_ctor$$
  *(.dtors)
 
 __flash_preinit_array$$
-                0x00004294        0x0
-                0x00004294                        __preinit_array_start = .
+                0x000042dc        0x0
+                0x000042dc                        __preinit_array_start = .
  *(.preinit_array)
-                0x00004294                        __preinit_array_end = .
+                0x000042dc                        __preinit_array_end = .
 
 __flash_.got$$
  *(.got.plt)
  *(.got)
 
 __flash_init_array$$
-                0x00004294        0x4
-                0x00004294                        __init_array_start = .
+                0x000042dc        0x4
+                0x000042dc                        __init_array_start = .
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array)
- .init_array    0x00004294        0x4 C:/Renesas/RA/e2studio_v2025-10_fsp_v6.2.0/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
-                0x00004298                        __init_array_end = .
+ .init_array    0x000042dc        0x4 C:/Renesas/RA/e2studio_v2025-10_fsp_v6.2.0/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+                0x000042e0                        __init_array_end = .
 
 __flash_fini_array$$
-                0x00004298        0x4
-                0x00004298                        __fini_array_start = .
+                0x000042e0        0x4
+                0x000042e0                        __fini_array_start = .
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array)
- .fini_array    0x00004298        0x4 C:/Renesas/RA/e2studio_v2025-10_fsp_v6.2.0/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
-                0x0000429c                        __fini_array_end = .
+ .fini_array    0x000042e0        0x4 C:/Renesas/RA/e2studio_v2025-10_fsp_v6.2.0/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+                0x000042e4                        __fini_array_end = .
 
 __flash_arm.extab$$
  *(.ARM.extab*)
  *(.gnu.linkonce.armextab.*)
 
 __flash_arm.exidx$$
-                0x0000429c        0x0
-                0x0000429c                        __exidx_start = .
+                0x000042e4        0x0
+                0x000042e4                        __exidx_start = .
  *(.ARM.exidx*)
  *(.gnu.linkonce.armexidx.*)
-                0x0000429c                        __exidx_end = .
+                0x000042e4                        __exidx_end = .
 
 .flash.endof    0x00008000        0x0
                 0x00008000                        __ddsc_FLASH_END = .
@@ -2672,8 +2682,8 @@ __option_setting_ofs1_sel_reg$$
  .tm_clone_table
                 0x0100a284        0x0 C:/Renesas/RA/e2studio_v2025-10_fsp_v6.2.0/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtend.o
 
-.igot.plt       0x0000429c        0x0
- .igot.plt      0x0000429c        0x0 C:/Renesas/RA/e2studio_v2025-10_fsp_v6.2.0/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+.igot.plt       0x000042e4        0x0
+ .igot.plt      0x000042e4        0x0 C:/Renesas/RA/e2studio_v2025-10_fsp_v6.2.0/toolchains/gcc_arm/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
 
 .option_setting_ofs1_sel.endof
                 0x0100a284        0x0
@@ -2824,7 +2834,7 @@ LOAD linker stubs
  .comment       0x00000044       0x45 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .comment       0x00000044       0x45 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
 
-.debug_info     0x00000000    0x5d760
+.debug_info     0x00000000    0x5d7d5
  .debug_info    0x00000000       0xfd ./src/CAN_thread_entry.o
  .debug_info    0x000000fd      0xff6 ./src/hal_warmstart.o
  .debug_info    0x000010f3       0xfd ./src/i2c_thread_entry.o
@@ -2835,29 +2845,29 @@ LOAD linker stubs
  .debug_info    0x00009771     0x25f4 ./ra_gen/i2c_thread.o
  .debug_info    0x0000bd65      0x66a ./ra_gen/main.o
  .debug_info    0x0000c3cf      0xa31 ./ra_gen/pin_data.o
- .debug_info    0x0000ce00     0x39ea ./ra_gen/uart_thread.o
- .debug_info    0x000107ea      0x8fc ./ra_gen/vector_data.o
- .debug_info    0x000110e6     0x4972 ./ra/fsp/src/rm_freertos_port/port.o
- .debug_info    0x00015a58     0xa17b ./ra/fsp/src/r_sci_uart/r_sci_uart.o
- .debug_info    0x0001fbd3     0x46a7 ./ra/fsp/src/r_rtc/r_rtc.o
- .debug_info    0x0002427a     0x7704 ./ra/fsp/src/r_ioport/r_ioport.o
- .debug_info    0x0002b97e     0x85e9 ./ra/fsp/src/r_iic_master/r_iic_master.o
- .debug_info    0x00033f67     0x802e ./ra/fsp/src/r_flash_hp/r_flash_hp.o
- .debug_info    0x0003bf95     0x83c0 ./ra/fsp/src/r_canfd/r_canfd.o
- .debug_info    0x00044355      0x4e6 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
- .debug_info    0x0004483b     0x658d ./ra/fsp/src/bsp/mcu/all/bsp_clocks.o
- .debug_info    0x0004adc8      0x966 ./ra/fsp/src/bsp/mcu/all/bsp_common.o
- .debug_info    0x0004b72e      0x204 ./ra/fsp/src/bsp/mcu/all/bsp_delay.o
- .debug_info    0x0004b932     0x135a ./ra/fsp/src/bsp/mcu/all/bsp_group_irq.o
- .debug_info    0x0004cc8c       0xb2 ./ra/fsp/src/bsp/mcu/all/bsp_io.o
- .debug_info    0x0004cd3e     0x2019 ./ra/fsp/src/bsp/mcu/all/bsp_irq.o
- .debug_info    0x0004ed57     0x3912 ./ra/fsp/src/bsp/mcu/all/bsp_register_protection.o
- .debug_info    0x00052669      0x187 ./ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.o
- .debug_info    0x000527f0     0x120f ./ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.o
- .debug_info    0x000539ff      0x2c1 ./ra/aws/FreeRTOS/FreeRTOS/Source/list.o
- .debug_info    0x00053cc0     0x3601 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
- .debug_info    0x000572c1     0x42cb ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
- .debug_info    0x0005b58c     0x21d4 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
+ .debug_info    0x0000ce00     0x3a5f ./ra_gen/uart_thread.o
+ .debug_info    0x0001085f      0x8fc ./ra_gen/vector_data.o
+ .debug_info    0x0001115b     0x4972 ./ra/fsp/src/rm_freertos_port/port.o
+ .debug_info    0x00015acd     0xa17b ./ra/fsp/src/r_sci_uart/r_sci_uart.o
+ .debug_info    0x0001fc48     0x46a7 ./ra/fsp/src/r_rtc/r_rtc.o
+ .debug_info    0x000242ef     0x7704 ./ra/fsp/src/r_ioport/r_ioport.o
+ .debug_info    0x0002b9f3     0x85e9 ./ra/fsp/src/r_iic_master/r_iic_master.o
+ .debug_info    0x00033fdc     0x802e ./ra/fsp/src/r_flash_hp/r_flash_hp.o
+ .debug_info    0x0003c00a     0x83c0 ./ra/fsp/src/r_canfd/r_canfd.o
+ .debug_info    0x000443ca      0x4e6 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
+ .debug_info    0x000448b0     0x658d ./ra/fsp/src/bsp/mcu/all/bsp_clocks.o
+ .debug_info    0x0004ae3d      0x966 ./ra/fsp/src/bsp/mcu/all/bsp_common.o
+ .debug_info    0x0004b7a3      0x204 ./ra/fsp/src/bsp/mcu/all/bsp_delay.o
+ .debug_info    0x0004b9a7     0x135a ./ra/fsp/src/bsp/mcu/all/bsp_group_irq.o
+ .debug_info    0x0004cd01       0xb2 ./ra/fsp/src/bsp/mcu/all/bsp_io.o
+ .debug_info    0x0004cdb3     0x2019 ./ra/fsp/src/bsp/mcu/all/bsp_irq.o
+ .debug_info    0x0004edcc     0x3912 ./ra/fsp/src/bsp/mcu/all/bsp_register_protection.o
+ .debug_info    0x000526de      0x187 ./ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.o
+ .debug_info    0x00052865     0x120f ./ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.o
+ .debug_info    0x00053a74      0x2c1 ./ra/aws/FreeRTOS/FreeRTOS/Source/list.o
+ .debug_info    0x00053d35     0x3601 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+ .debug_info    0x00057336     0x42cb ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+ .debug_info    0x0005b601     0x21d4 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
 
 .debug_abbrev   0x00000000     0x5ef6
  .debug_abbrev  0x00000000       0xa2 ./src/CAN_thread_entry.o
@@ -3113,41 +3123,41 @@ LOAD linker stubs
  .debug_line    0x00010ac5     0x3448 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
  .debug_line    0x00013f0d      0xed0 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
 
-.debug_str      0x00000000    0x13904
- .debug_str     0x00000000    0x13904 ./src/CAN_thread_entry.o
+.debug_str      0x00000000    0x1397f
+ .debug_str     0x00000000    0x1397f ./src/CAN_thread_entry.o
                                 0x226 (size before relaxing)
- .debug_str     0x00013904     0x320c ./src/hal_warmstart.o
- .debug_str     0x00013904      0x226 ./src/i2c_thread_entry.o
- .debug_str     0x00013904      0x228 ./src/uart_thread_entry.o
- .debug_str     0x00013904     0x3e86 ./ra_gen/CAN_thread.o
- .debug_str     0x00013904     0x3754 ./ra_gen/common_data.o
- .debug_str     0x00013904     0x35d0 ./ra_gen/hal_data.o
- .debug_str     0x00013904     0x31ac ./ra_gen/i2c_thread.o
- .debug_str     0x00013904      0x614 ./ra_gen/main.o
- .debug_str     0x00013904     0x1db4 ./ra_gen/pin_data.o
- .debug_str     0x00013904     0x4a4d ./ra_gen/uart_thread.o
- .debug_str     0x00013904     0x1ebd ./ra_gen/vector_data.o
- .debug_str     0x00013904     0x204d ./ra/fsp/src/rm_freertos_port/port.o
- .debug_str     0x00013904     0x6e73 ./ra/fsp/src/r_sci_uart/r_sci_uart.o
- .debug_str     0x00013904     0x35a7 ./ra/fsp/src/r_rtc/r_rtc.o
- .debug_str     0x00013904     0x5d41 ./ra/fsp/src/r_ioport/r_ioport.o
- .debug_str     0x00013904     0x4fde ./ra/fsp/src/r_iic_master/r_iic_master.o
- .debug_str     0x00013904     0x4c5f ./ra/fsp/src/r_flash_hp/r_flash_hp.o
- .debug_str     0x00013904     0x520c ./ra/fsp/src/r_canfd/r_canfd.o
- .debug_str     0x00013904      0x8b9 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
- .debug_str     0x00013904     0x2d78 ./ra/fsp/src/bsp/mcu/all/bsp_clocks.o
- .debug_str     0x00013904     0x1cc6 ./ra/fsp/src/bsp/mcu/all/bsp_common.o
- .debug_str     0x00013904      0x32e ./ra/fsp/src/bsp/mcu/all/bsp_delay.o
- .debug_str     0x00013904     0x222d ./ra/fsp/src/bsp/mcu/all/bsp_group_irq.o
- .debug_str     0x00013904      0x20d ./ra/fsp/src/bsp/mcu/all/bsp_io.o
- .debug_str     0x00013904     0x2817 ./ra/fsp/src/bsp/mcu/all/bsp_irq.o
- .debug_str     0x00013904     0x1b86 ./ra/fsp/src/bsp/mcu/all/bsp_register_protection.o
- .debug_str     0x00013904      0x27c ./ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.o
- .debug_str     0x00013904      0xade ./ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.o
- .debug_str     0x00013904      0x33b ./ra/aws/FreeRTOS/FreeRTOS/Source/list.o
- .debug_str     0x00013904      0xdd9 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
- .debug_str     0x00013904     0x1425 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
- .debug_str     0x00013904      0xce1 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
+ .debug_str     0x0001397f     0x320c ./src/hal_warmstart.o
+ .debug_str     0x0001397f      0x226 ./src/i2c_thread_entry.o
+ .debug_str     0x0001397f      0x228 ./src/uart_thread_entry.o
+ .debug_str     0x0001397f     0x3e86 ./ra_gen/CAN_thread.o
+ .debug_str     0x0001397f     0x3754 ./ra_gen/common_data.o
+ .debug_str     0x0001397f     0x35d0 ./ra_gen/hal_data.o
+ .debug_str     0x0001397f     0x31ac ./ra_gen/i2c_thread.o
+ .debug_str     0x0001397f      0x614 ./ra_gen/main.o
+ .debug_str     0x0001397f     0x1db4 ./ra_gen/pin_data.o
+ .debug_str     0x0001397f     0x4ac8 ./ra_gen/uart_thread.o
+ .debug_str     0x0001397f     0x1ebd ./ra_gen/vector_data.o
+ .debug_str     0x0001397f     0x204d ./ra/fsp/src/rm_freertos_port/port.o
+ .debug_str     0x0001397f     0x6e73 ./ra/fsp/src/r_sci_uart/r_sci_uart.o
+ .debug_str     0x0001397f     0x35a7 ./ra/fsp/src/r_rtc/r_rtc.o
+ .debug_str     0x0001397f     0x5d41 ./ra/fsp/src/r_ioport/r_ioport.o
+ .debug_str     0x0001397f     0x4fde ./ra/fsp/src/r_iic_master/r_iic_master.o
+ .debug_str     0x0001397f     0x4c5f ./ra/fsp/src/r_flash_hp/r_flash_hp.o
+ .debug_str     0x0001397f     0x520c ./ra/fsp/src/r_canfd/r_canfd.o
+ .debug_str     0x0001397f      0x8b9 ./ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.o
+ .debug_str     0x0001397f     0x2d78 ./ra/fsp/src/bsp/mcu/all/bsp_clocks.o
+ .debug_str     0x0001397f     0x1cc6 ./ra/fsp/src/bsp/mcu/all/bsp_common.o
+ .debug_str     0x0001397f      0x32e ./ra/fsp/src/bsp/mcu/all/bsp_delay.o
+ .debug_str     0x0001397f     0x222d ./ra/fsp/src/bsp/mcu/all/bsp_group_irq.o
+ .debug_str     0x0001397f      0x20d ./ra/fsp/src/bsp/mcu/all/bsp_io.o
+ .debug_str     0x0001397f     0x2817 ./ra/fsp/src/bsp/mcu/all/bsp_irq.o
+ .debug_str     0x0001397f     0x1b86 ./ra/fsp/src/bsp/mcu/all/bsp_register_protection.o
+ .debug_str     0x0001397f      0x27c ./ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.o
+ .debug_str     0x0001397f      0xade ./ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.o
+ .debug_str     0x0001397f      0x33b ./ra/aws/FreeRTOS/FreeRTOS/Source/list.o
+ .debug_str     0x0001397f      0xdd9 ./ra/aws/FreeRTOS/FreeRTOS/Source/queue.o
+ .debug_str     0x0001397f     0x1425 ./ra/aws/FreeRTOS/FreeRTOS/Source/tasks.o
+ .debug_str     0x0001397f      0xce1 ./ra/aws/FreeRTOS/FreeRTOS/Source/timers.o
 
 .debug_frame    0x00000000     0x1fa0
  .debug_frame   0x00000000       0x28 ./src/CAN_thread_entry.o
