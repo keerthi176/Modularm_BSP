@@ -159,8 +159,8 @@ FSP Configuration
       P008 92 - - - - Disabled - - "ADC0: AN008; ICU0: IRQ12" - None - - 
       P014 85 - - - - Disabled - - "ADC0: AN012; DAC0: DA0" - None - - 
       P015 84 - - - - Disabled - - "ADC0: AN013; DAC1: DA1; ICU0: IRQ13" - None - - 
-      P100 75 - - - - Disabled - - "AGT0: AGTIO0; BUS_ASYNCH0: D00; GPT_POEG0: GTETRGA; GPT5: GTIOC5B; ICU0: IRQ02; OSPI0: OMSCLK; QSPI0: QSPCLK; SCI0: RXD0; SCI0: SCL0; SCI1: SCK1; SPI1: MISOB" - None - - 
-      P101 74 - - - - Disabled - - "AGT0: AGTEE0; BUS_ASYNCH0: D01; GPT_POEG1: GTETRGB; GPT5: GTIOC5A; ICU0: IRQ01; OSPI0: OMSIO7; QSPI0: QIO1; SCI0: SDA0; SCI0: TXD0; SCI1: CTSRTS1; SPI1: MOSIB" - None - - 
+      P100 75 SCI0_RXD0 - Low None "Peripheral mode" CMOS None "AGT0: AGTIO0; BUS_ASYNCH0: D00; GPT_POEG0: GTETRGA; GPT5: GTIOC5B; ICU0: IRQ02; OSPI0: OMSCLK; QSPI0: QSPCLK; SCI0: RXD0; SCI0: SCL0; SCI1: SCK1; SPI1: MISOB" - IO - - 
+      P101 74 SCI0_TXD0 - Low None "Peripheral mode" CMOS None "AGT0: AGTEE0; BUS_ASYNCH0: D01; GPT_POEG1: GTETRGB; GPT5: GTIOC5A; ICU0: IRQ01; OSPI0: OMSIO7; QSPI0: QIO1; SCI0: SDA0; SCI0: TXD0; SCI1: CTSRTS1; SPI1: MOSIB" - IO - - 
       P102 73 - - - - Disabled - - "ADC0: ADTRG0; AGT0: AGTO0; BUS_ASYNCH0: D02; CAN0: CRX0; GPT_OPS0: GTOWLO; GPT2: GTIOC2B; OSPI0: OMSIO1; QSPI0: QIO0; SCI0: SCK0; SPI1: RSPCKB" - None - - 
       P103 72 - - - - Disabled - - "AGT2: AGTIO2; BUS_ASYNCH0: D03; CAN0: CTX0; GPT_OPS0: GTOWUP; GPT2: GTIOC2A; OSPI0: OMSIO6; QSPI0: QIO3; SCI0: CTSRTS0; SPI1: SSLB0" - None - - 
       P104 71 - - - - Disabled - - "AGT2: AGTEE2; BUS_ASYNCH0: D04; GPT_POEG1: GTETRGB; GPT1: GTIOC1B; ICU0: IRQ01; OSPI0: OMDQS; QSPI0: QIO2; SCI8: RXD8; SCI8: SCL8; SPI1: SSLB1" - None - - 
@@ -388,6 +388,14 @@ FSP Configuration
     Reception: Acceptance Filtering: Channel 0 Rule Count: 32
     Reception: Acceptance Filtering: Channel 1 Rule Count: 0
     
+  Module "UART (r_sci_uart)"
+    Parameter Checking: Default (BSP)
+    FIFO Support: Disable
+    DTC Support: Disable
+    Flow Control Support: Disable
+    RS-485 Support: Disable
+    IrDA Support: Disabled
+    
   FreeRTOS
     General: Custom FreeRTOSConfig.h: 
     General: Use Preemption: Enabled
@@ -497,12 +505,41 @@ FSP Configuration
       Interrupts: Channel Interrupt Priority Level: Priority 12
       Filter List Array: p_canfd0_afl
       
-  Thread "New Thread"
-    Symbol: new_thread0
-    Name: New Thread
+  Thread "UART_Thread"
+    Symbol: uart_thread
+    Name: UART_Thread
     Stack size (bytes): 1024
     Priority: 1
     Thread Context: NULL
     Memory Allocation: Static
     Allocate Secure Context: Enable
     
+    Instance "g_uart0 UART (r_sci_uart)"
+      General: Name: g_uart0
+      General: Channel: 0
+      General: Data Bits: 8bits
+      General: Parity: None
+      General: Stop Bits: 1bit
+      Baud: Baud Rate: 115200
+      Baud: Baud Rate Modulation: Disabled
+      Baud: Max Error (%): 5
+      Flow Control: CTS/RTS Selection: Hardware RTS
+      Flow Control: Software RTS Port: Disabled
+      Flow Control: Software RTS Pin: Disabled
+      Extra: Clock Source: Internal Clock
+      Extra: Start bit detection: Falling Edge
+      Extra: Noise Filter: Disable
+      Extra: Receive FIFO Trigger Level: Max
+      Extra: IrDA: Enable: Disabled
+      Extra: IrDA: RXD Polarity Switching: Normal
+      Extra: IrDA: TXD Polarity Switching: Normal
+      Extra: RS-485: DE Pin: Disable
+      Extra: RS-485: DE Pin Polarity: Active High
+      Extra: RS-485: DE Port Number: Disabled
+      Extra: RS-485: DE Pin Number: Disabled
+      Interrupts: Callback: NULL
+      Interrupts: Receive Interrupt Priority: Priority 12
+      Interrupts: Transmit Data Empty Interrupt Priority: Priority 12
+      Interrupts: Transmit End Interrupt Priority: Priority 12
+      Interrupts: Error Interrupt Priority: Priority 12
+      
