@@ -6,16 +6,19 @@
 C_SRCS += \
 ../src/CAN_thread_entry.c \
 ../src/hal_warmstart.c \
+../src/i2c_thread_entry.c \
 ../src/uart_thread_entry.c 
 
 C_DEPS += \
 ./src/CAN_thread_entry.d \
 ./src/hal_warmstart.d \
+./src/i2c_thread_entry.d \
 ./src/uart_thread_entry.d 
 
 OBJS += \
 ./src/CAN_thread_entry.o \
 ./src/hal_warmstart.o \
+./src/i2c_thread_entry.o \
 ./src/uart_thread_entry.o 
 
 SREC += \

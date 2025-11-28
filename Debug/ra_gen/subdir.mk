@@ -7,6 +7,7 @@ C_SRCS += \
 ../ra_gen/CAN_thread.c \
 ../ra_gen/common_data.c \
 ../ra_gen/hal_data.c \
+../ra_gen/i2c_thread.c \
 ../ra_gen/main.c \
 ../ra_gen/pin_data.c \
 ../ra_gen/uart_thread.c \
@@ -16,6 +17,7 @@ C_DEPS += \
 ./ra_gen/CAN_thread.d \
 ./ra_gen/common_data.d \
 ./ra_gen/hal_data.d \
+./ra_gen/i2c_thread.d \
 ./ra_gen/main.d \
 ./ra_gen/pin_data.d \
 ./ra_gen/uart_thread.d \
@@ -25,6 +27,7 @@ OBJS += \
 ./ra_gen/CAN_thread.o \
 ./ra_gen/common_data.o \
 ./ra_gen/hal_data.o \
+./ra_gen/i2c_thread.o \
 ./ra_gen/main.o \
 ./ra_gen/pin_data.o \
 ./ra_gen/uart_thread.o \

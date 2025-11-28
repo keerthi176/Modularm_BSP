@@ -66,10 +66,12 @@
   </raClockConfiguration>
   <raPinConfiguration>
     <pincfg active="true" name="" symbol="">
-      <configSetting altId="can0.crx.p402" configurationId="can0.crx" peripheral="CAN0"/>
-      <configSetting altId="can0.ctx.p401" configurationId="can0.ctx" peripheral="CAN0"/>
+      <configSetting altId="can0.crx.p102" configurationId="can0.crx" peripheral="CAN0"/>
+      <configSetting altId="can0.ctx.p103" configurationId="can0.ctx" peripheral="CAN0"/>
       <configSetting altId="debug0.swclk.p300" configurationId="debug0.swclk" isUsedByDriver="true" peripheral="DEBUG0"/>
       <configSetting altId="debug0.swdio.p108" configurationId="debug0.swdio" isUsedByDriver="true" peripheral="DEBUG0"/>
+      <configSetting altId="iic0.scl.p400" configurationId="iic0.scl" isUsedByDriver="true" peripheral="IIC0"/>
+      <configSetting altId="iic0.sda.p401" configurationId="iic0.sda" isUsedByDriver="true" peripheral="IIC0"/>
       <configSetting altId="sci0.rxd.p100" configurationId="sci0.rxd" isUsedByDriver="true" peripheral="SCI0"/>
       <configSetting altId="sci0.txd.p101" configurationId="sci0.txd" isUsedByDriver="true" peripheral="SCI0"/>
     </pincfg>

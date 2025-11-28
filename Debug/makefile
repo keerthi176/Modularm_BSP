@@ -13,8 +13,10 @@ RM := rm -rf
 -include src/subdir.mk
 -include ra_gen/subdir.mk
 -include ra/fsp/src/rm_freertos_port/subdir.mk
+-include ra/fsp/src/rm_comms_i2c/subdir.mk
 -include ra/fsp/src/r_sci_uart/subdir.mk
 -include ra/fsp/src/r_ioport/subdir.mk
+-include ra/fsp/src/r_iic_master/subdir.mk
 -include ra/fsp/src/r_canfd/subdir.mk
 -include ra/fsp/src/bsp/mcu/ra6m5/subdir.mk
 -include ra/fsp/src/bsp/mcu/all/subdir.mk

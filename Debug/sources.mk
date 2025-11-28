@@ -58,8 +58,10 @@ ra/fsp/src/bsp/cmsis/Device/RENESAS/Source \
 ra/fsp/src/bsp/mcu/all \
 ra/fsp/src/bsp/mcu/ra6m5 \
 ra/fsp/src/r_canfd \
+ra/fsp/src/r_iic_master \
 ra/fsp/src/r_ioport \
 ra/fsp/src/r_sci_uart \
+ra/fsp/src/rm_comms_i2c \
 ra/fsp/src/rm_freertos_port \
 ra_gen \
 src \

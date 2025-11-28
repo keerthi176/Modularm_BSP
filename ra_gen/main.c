@@ -7,6 +7,8 @@ extern void CAN_thread_create(void);
 extern TaskHandle_t CAN_thread;
 extern void uart_thread_create(void);
 extern TaskHandle_t uart_thread;
+extern void i2c_thread_create(void);
+extern TaskHandle_t i2c_thread;
 uint32_t g_fsp_common_thread_count;
 bool g_fsp_common_initialized;
 SemaphoreHandle_t g_fsp_common_initialized_semaphore;
@@ -106,6 +108,7 @@ int main(void)
     /* Init RTOS tasks. */
     CAN_thread_create ();
     uart_thread_create ();
+    i2c_thread_create ();
 
     /* Start the scheduler. */
     vTaskStartScheduler ();
