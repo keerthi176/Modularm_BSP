@@ -7,9 +7,9 @@
 #include "semphr.h"
 #include "hal_data.h"
 #ifdef __cplusplus
-                extern "C" void CAN_thread_entry(void * pvParameters);
+                extern "C" void can_thread_entry(void * pvParameters);
                 #else
-extern void CAN_thread_entry(void *pvParameters);
+extern void can_thread_entry(void *pvParameters);
 #endif
 #include "r_canfd.h"
 #include "r_can_api.h"

@@ -5,11 +5,13 @@
 ASM_UPPER_SRCS := 
 O_SRCS := 
 ELF_SRCS := 
-SX_SRCS := 
 LINKER_SCRIPT := 
+SX_SRCS := 
 JMP_UPPER_SRCS := 
 P_UPPER_SRCS := 
+X_SRCS := 
 SRC_SRCS := 
+X_UPPER_SRCS := 
 JMP_SRCS := 
 FSY_UPPER_SRCS := 
 PP_UPPER_SRCS := 
@@ -38,27 +40,29 @@ PP_UPPER_DEPS :=
 P_DEPS := 
 FSY_UPPER_DEPS := 
 C_DEPS := 
+CREF := 
 SRC_DEPS := 
+OBJCOPY := 
 JMP_UPPER_DEPS := 
 PP_DEPS := 
 SX_DEPS := 
 ASM_UPPER_DEPS := 
-SX_UPPER_DEPS := 
 OBJS := 
-SECONDARY_FLASH := 
+SX_UPPER_DEPS := 
 ASM_DEPS := 
-SREC := 
-S_UPPER_DEPS := 
 MAP := 
+S_UPPER_DEPS := 
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+ra/arm/CMSIS_6 \
 ra/aws/FreeRTOS/FreeRTOS/Source \
 ra/fsp/src/bsp/cmsis/Device/RENESAS/Source \
 ra/fsp/src/bsp/mcu/all \
 ra/fsp/src/bsp/mcu/ra6m5 \
-ra/fsp/src/r_icu \
+ra/fsp/src/r_canfd \
 ra/fsp/src/r_ioport \
+ra/fsp/src/r_sci_uart \
 ra/fsp/src/rm_freertos_port \
 ra_gen \
 src \

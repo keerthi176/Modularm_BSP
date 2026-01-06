@@ -13,12 +13,14 @@ RM := rm -rf
 -include src/subdir.mk
 -include ra_gen/subdir.mk
 -include ra/fsp/src/rm_freertos_port/subdir.mk
+-include ra/fsp/src/r_sci_uart/subdir.mk
 -include ra/fsp/src/r_ioport/subdir.mk
--include ra/fsp/src/r_icu/subdir.mk
+-include ra/fsp/src/r_canfd/subdir.mk
 -include ra/fsp/src/bsp/mcu/ra6m5/subdir.mk
 -include ra/fsp/src/bsp/mcu/all/subdir.mk
 -include ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/subdir.mk
 -include ra/aws/FreeRTOS/FreeRTOS/Source/subdir.mk
+-include ra/arm/CMSIS_6/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -52,6 +54,7 @@ ifneq ($(strip $(FSY_UPPER_DEPS)),)
 endif
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
+$(C_DEPS):$(SMS_ASM)
 endif
 ifneq ($(strip $(SRC_DEPS)),)
 -include $(SRC_DEPS)
@@ -82,34 +85,34 @@ endif
 -include ../makefile.defs
 
 # Add inputs and outputs from these tool invocations to the build variables 
-SECONDARY_FLASH += \
-Modularm_BSP.srec \
+OBJCOPY += \
+Modualrm_BSP.srec \
 
 SECONDARY_SIZE += \
-Modularm_BSP.siz \
+Modualrm_BSP.siz \
 
 
 # All Target
-all: Modularm_BSP.elf secondary-outputs
+all: Modualrm_BSP.elf secondary-outputs
 
 # Tool invocations
-Modularm_BSP.elf: $(OBJS) $(USER_OBJS) $(LINKER_SCRIPT)
-	$(file > Modularm_BSP.elf.in,-mcpu=cortex-m33 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -O2 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-strict-aliasing -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal -g -T "fsp.ld" -Xlinker --gc-sections -L "D:\\ModularmProject\\E2_Studio_Workspace\\Modularm_BSP_2/script" -Wl,-Map,"Modularm_BSP.map" --specs=nano.specs -o "Modularm_BSP.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group)
-	@echo Building target: $@ && arm-none-eabi-gcc @"Modularm_BSP.elf.in"
-Modularm_BSP.srec: Modularm_BSP.elf
-	arm-none-eabi-objcopy -O srec "Modularm_BSP.elf"  "Modularm_BSP.srec"
-Modularm_BSP.siz: Modularm_BSP.elf
-	arm-none-eabi-size --format=berkeley "Modularm_BSP.elf"
+Modualrm_BSP.elf: $(OBJS) $(USER_OBJS) $(LIBRARY_GENERATOR_OUTPUTTYPE_OUTPUTS) $(LINKER_SCRIPT)
+	$(file > Modualrm_BSP.elf.in,-mcpu=cortex-m33 -mthumb -mlittle-endian -mfloat-abi=hard -mfpu=fpv5-sp-d16 -O2 -ffunction-sections -fdata-sections -fno-strict-aliasing -fmessage-length=0 -funsigned-char -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Waggregate-return -Wno-parentheses-equality -Wfloat-equal -g3 -o "Modualrm_BSP.elf" $(OBJS) $(USER_OBJS) -T "fsp.lld" -L"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject/script" -L"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Debug" -Wl,-Map=Modualrm_BSP.map -Wl,--start-group -lcrt0 -lc++abi  -Wl,--end-group -Wl,--gc-sections -Wl,--cref -Wl,-z,norelro -Wl,--icf=none -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra_gen" -I"." -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra_cfg\\fsp_cfg\\bsp" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra_cfg\\fsp_cfg" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra_cfg\\aws" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\src" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra\\fsp\\inc" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra\\fsp\\inc\\api" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra\\fsp\\inc\\instances" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra\\fsp\\src\\rm_freertos_port" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra\\aws\\FreeRTOS\\FreeRTOS\\Source\\include" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra\\arm\\CMSIS_6\\CMSIS\\Core\\Include")
+	@echo Building target: $@ && clang  --target=arm-none-eabi @"Modualrm_BSP.elf.in"> Modualrm_BSP.cref
+Modualrm_BSP.srec: Modualrm_BSP.elf
+	llvm-objcopy "Modualrm_BSP.elf" -O srec  "Modualrm_BSP.srec"
+Modualrm_BSP.siz: Modualrm_BSP.elf
+	llvm-size --format=berkeley "Modualrm_BSP.elf"
 # Other Targets
 clean:
-	-$(file > clean_file.tmp,  $(JMP_DEPS)  $(FSY_DEPS)  $(C_UPPER_DEPS)  $(SECONDARY_SIZE)  $(SRC_UPPER_DEPS)  $(P_UPPER_DEPS)  $(S_DEPS)  $(PP_UPPER_DEPS)  $(P_DEPS)  $(FSY_UPPER_DEPS)  $(C_DEPS)  $(SRC_DEPS)  $(JMP_UPPER_DEPS)  $(PP_DEPS)  $(SX_DEPS)  $(ASM_UPPER_DEPS)  $(SX_UPPER_DEPS)  $(OBJS)  $(SECONDARY_FLASH)  $(ASM_DEPS)  $(SREC)  $(S_UPPER_DEPS)  $(MAP) )
+	-$(file > clean_file.tmp,  $(JMP_DEPS)  $(FSY_DEPS)  $(C_UPPER_DEPS)  $(SECONDARY_SIZE)  $(SRC_UPPER_DEPS)  $(P_UPPER_DEPS)  $(S_DEPS)  $(PP_UPPER_DEPS)  $(P_DEPS)  $(FSY_UPPER_DEPS)  $(C_DEPS)  $(CREF)  $(SRC_DEPS)  $(OBJCOPY)  $(JMP_UPPER_DEPS)  $(PP_DEPS)  $(SX_DEPS)  $(ASM_UPPER_DEPS)  $(OBJS)  $(SX_UPPER_DEPS)  $(ASM_DEPS)  $(MAP)  $(S_UPPER_DEPS) )
 	-@ xargs -P 2 -s 32000 -t -a clean_file.tmp $(RM)
 	-@$(RM) clean_file.tmp
-	-$(RM)  Modularm_BSP.elf
+	-$(RM)  Modualrm_BSP.elf
 	-@echo ' '
 
-secondary-outputs: $(SECONDARY_FLASH) $(SECONDARY_SIZE)
+secondary-outputs: $(OBJCOPY) $(SECONDARY_SIZE)
 
-.PHONY: all clean dependents
+.PHONY: all clean dependents 
 
 -include ../makefile.targets

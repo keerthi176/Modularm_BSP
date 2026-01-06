@@ -3,8 +3,10 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "semphr.h"
-extern void CAN_thread_create(void);
-extern TaskHandle_t CAN_thread;
+extern void can_thread_create(void);
+extern TaskHandle_t can_thread;
+extern void uart_thread_create(void);
+extern TaskHandle_t uart_thread;
 uint32_t g_fsp_common_thread_count;
 bool g_fsp_common_initialized;
 SemaphoreHandle_t g_fsp_common_initialized_semaphore;
@@ -102,7 +104,8 @@ int main(void)
     }
 
     /* Init RTOS tasks. */
-    CAN_thread_create ();
+    can_thread_create ();
+    uart_thread_create ();
 
     /* Start the scheduler. */
     vTaskStartScheduler ();

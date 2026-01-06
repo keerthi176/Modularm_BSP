@@ -1,7 +1,7 @@
-#include <CAN_thread.h>
+#include <can_thread.h>
 /* New Thread entry function */
 /* pvParameters contains TaskHandle_t */
-void new_thread0_entry(void *pvParameters)
+void can_thread_entry(void *pvParameters)
 {
     FSP_PARAMETER_NOT_USED (pvParameters);
 

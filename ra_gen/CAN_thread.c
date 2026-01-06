@@ -1,17 +1,17 @@
 /* generated thread source file - do not edit */
-#include "CAN_thread.h"
+#include "can_thread.h"
 
 #if 1
-static StaticTask_t CAN_thread_memory;
+static StaticTask_t can_thread_memory;
 #if defined(__ARMCC_VERSION)           /* AC6 compiler */
-                static uint8_t CAN_thread_stack[1024] BSP_PLACE_IN_SECTION(BSP_UNINIT_SECTION_PREFIX ".stack.thread") BSP_ALIGN_VARIABLE(BSP_STACK_ALIGNMENT);
+                static uint8_t can_thread_stack[1024] BSP_PLACE_IN_SECTION(BSP_UNINIT_SECTION_PREFIX ".stack.thread") BSP_ALIGN_VARIABLE(BSP_STACK_ALIGNMENT);
                 #else
-static uint8_t CAN_thread_stack[1024] BSP_PLACE_IN_SECTION(BSP_UNINIT_SECTION_PREFIX ".stack.CAN_thread") BSP_ALIGN_VARIABLE(BSP_STACK_ALIGNMENT);
+static uint8_t can_thread_stack[1024] BSP_PLACE_IN_SECTION(BSP_UNINIT_SECTION_PREFIX ".stack.can_thread") BSP_ALIGN_VARIABLE(BSP_STACK_ALIGNMENT);
 #endif
 #endif
-TaskHandle_t CAN_thread;
-void CAN_thread_create(void);
-static void CAN_thread_func(void *pvParameters);
+TaskHandle_t can_thread;
+void can_thread_create(void);
+static void can_thread_func(void *pvParameters);
 void rtos_startup_err_callback(void *p_instance, void *p_data);
 void rtos_startup_common_init(void);
 /* Nominal and Data bit timing configuration */
@@ -132,10 +132,10 @@ const can_instance_t g_canfd0 =
 { .p_ctrl = &g_canfd0_ctrl, .p_cfg = &g_canfd0_cfg, .p_api = &g_canfd_on_canfd };
 extern uint32_t g_fsp_common_thread_count;
 
-const rm_freertos_port_parameters_t CAN_thread_parameters =
+const rm_freertos_port_parameters_t can_thread_parameters =
 { .p_context = (void*) NULL, };
 
-void CAN_thread_create(void)
+void can_thread_create(void)
 {
     /* Increment count so we will know the number of threads created in the RA Configuration editor. */
     g_fsp_common_thread_count++;
@@ -143,35 +143,35 @@ void CAN_thread_create(void)
     /* Initialize each kernel object. */
 
 #if 1
-    CAN_thread = xTaskCreateStatic (
+    can_thread = xTaskCreateStatic (
 #else
-                    BaseType_t CAN_thread_create_err = xTaskCreate(
+                    BaseType_t can_thread_create_err = xTaskCreate(
                     #endif
-                                    CAN_thread_func,
-                                    (const char*) "can_thread", 1024 / 4, // In words, not bytes
-                                    (void*) &CAN_thread_parameters, //pvParameters
+                                    can_thread_func,
+                                    (const char*) "CAN_Thread", 1024 / 4, // In words, not bytes
+                                    (void*) &can_thread_parameters, //pvParameters
                                     1,
 #if 1
-                                    (StackType_t*) &CAN_thread_stack,
-                                    (StaticTask_t*) &CAN_thread_memory
+                                    (StackType_t*) &can_thread_stack,
+                                    (StaticTask_t*) &can_thread_memory
 #else
-                        & CAN_thread
+                        & can_thread
                         #endif
                                     );
 
 #if 1
-    if (NULL == CAN_thread)
+    if (NULL == can_thread)
     {
-        rtos_startup_err_callback (CAN_thread, 0);
+        rtos_startup_err_callback (can_thread, 0);
     }
 #else
-                    if (pdPASS != CAN_thread_create_err)
+                    if (pdPASS != can_thread_create_err)
                     {
-                        rtos_startup_err_callback(CAN_thread, 0);
+                        rtos_startup_err_callback(can_thread, 0);
                     }
                     #endif
 }
-static void CAN_thread_func(void *pvParameters)
+static void can_thread_func(void *pvParameters)
 {
     /* Initialize common components */
     rtos_startup_common_init ();
@@ -191,5 +191,5 @@ static void CAN_thread_func(void *pvParameters)
                     #endif
 
     /* Enter user code for this thread. Pass task handle. */
-    CAN_thread_entry (pvParameters);
+    can_thread_entry (pvParameters);
 }
