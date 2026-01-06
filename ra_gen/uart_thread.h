@@ -15,23 +15,23 @@ extern void uart_thread_entry(void *pvParameters);
 #include "r_uart_api.h"
 FSP_HEADER
 /** UART on SCI Instance. */
-extern const uart_instance_t RS232_thread;
+extern const uart_instance_t RS232;
 
 /** Access the UART instance using these structures when calling API functions directly (::p_api is not used). */
-extern sci_uart_instance_ctrl_t RS232_thread_ctrl;
-extern const uart_cfg_t RS232_thread_cfg;
-extern const sci_uart_extended_cfg_t RS232_thread_cfg_extend;
+extern sci_uart_instance_ctrl_t RS232_ctrl;
+extern const uart_cfg_t RS232_cfg;
+extern const sci_uart_extended_cfg_t RS232_cfg_extend;
 
 #ifndef NULL
 void NULL(uart_callback_args_t *p_args);
 #endif
 /** UART on SCI Instance. */
-extern const uart_instance_t RS485_thread;
+extern const uart_instance_t RS485;
 
 /** Access the UART instance using these structures when calling API functions directly (::p_api is not used). */
-extern sci_uart_instance_ctrl_t RS485_thread_ctrl;
-extern const uart_cfg_t RS485_thread_cfg;
-extern const sci_uart_extended_cfg_t RS485_thread_cfg_extend;
+extern sci_uart_instance_ctrl_t RS485_ctrl;
+extern const uart_cfg_t RS485_cfg;
+extern const sci_uart_extended_cfg_t RS485_cfg_extend;
 
 #ifndef NULL
 void NULL(uart_callback_args_t *p_args);

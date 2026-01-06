@@ -1,0 +1,38 @@
+# Renesas FSP generated files
+/ra_gen/
+/ra_cfg/
+
+# Build artifacts
+/Debug/
+/Release/
+*.o
+*.d
+*.elf
+*.map
+*.srec
+*.bin
+
+# e2studio project files
+.cproject
+.project
+.api_xml
+.secure_azone
+.secure_rzone
+.secure_xml
+Modualrm_BSP Debug_Flat.launch
+ra_cfg.txt
+
+# Editor/IDE specific files
+.metadata/
+.settings/
+.vscode/
+*.swp
+*~
+.clangd
+
+# Dependency directories
+/vendors/
+
+# Logs and other generated files
+*.log
+*.tmp
