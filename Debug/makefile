@@ -10,6 +10,8 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include src/Drivers/RS232/src/subdir.mk
+-include src/Drivers/GPIO/src/subdir.mk
 -include src/subdir.mk
 -include ra_gen/subdir.mk
 -include ra/fsp/src/rm_freertos_port/subdir.mk
@@ -19,6 +21,7 @@ RM := rm -rf
 -include ra/fsp/src/bsp/mcu/ra6m5/subdir.mk
 -include ra/fsp/src/bsp/mcu/all/subdir.mk
 -include ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/subdir.mk
+-include ra/aws/FreeRTOS/FreeRTOS/Source/portable/MemMang/subdir.mk
 -include ra/aws/FreeRTOS/FreeRTOS/Source/subdir.mk
 -include ra/arm/CMSIS_6/subdir.mk
 -include subdir.mk

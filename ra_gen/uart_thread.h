@@ -22,8 +22,8 @@ extern sci_uart_instance_ctrl_t RS232_ctrl;
 extern const uart_cfg_t RS232_cfg;
 extern const sci_uart_extended_cfg_t RS232_cfg_extend;
 
-#ifndef NULL
-void NULL(uart_callback_args_t *p_args);
+#ifndef RS232_callback
+void RS232_callback(uart_callback_args_t *p_args);
 #endif
 /** UART on SCI Instance. */
 extern const uart_instance_t RS485;
@@ -33,8 +33,8 @@ extern sci_uart_instance_ctrl_t RS485_ctrl;
 extern const uart_cfg_t RS485_cfg;
 extern const sci_uart_extended_cfg_t RS485_cfg_extend;
 
-#ifndef NULL
-void NULL(uart_callback_args_t *p_args);
+#ifndef RS232_callback
+void RS232_callback(uart_callback_args_t *p_args);
 #endif
 FSP_FOOTER
 #endif /* UART_THREAD_H_ */

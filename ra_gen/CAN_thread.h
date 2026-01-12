@@ -21,8 +21,8 @@ extern canfd_instance_ctrl_t g_canfd0_ctrl;
 extern const can_cfg_t g_canfd0_cfg;
 extern const canfd_extended_cfg_t g_canfd0_cfg_extend;
 
-#ifndef canfd0_callback
-void canfd0_callback(can_callback_args_t *p_args);
+#ifndef canfd_callback
+void canfd_callback(can_callback_args_t *p_args);
 #endif
 
 /* Global configuration (referenced by all instances) */

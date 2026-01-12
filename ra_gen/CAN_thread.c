@@ -124,7 +124,7 @@ canfd_extended_cfg_t g_canfd0_extended_cfg = { .p_afl = p_canfd0_afl,
 
 canfd_instance_ctrl_t g_canfd0_ctrl;
 const can_cfg_t g_canfd0_cfg = { .channel = 0, .p_bit_timing =
-		&g_canfd0_bit_timing_cfg, .p_callback = canfd0_callback, .p_extend =
+		&g_canfd0_bit_timing_cfg, .p_callback = canfd_callback, .p_extend =
 		&g_canfd0_extended_cfg, .p_context = NULL, .ipl = (12),
 #if defined(VECTOR_NUMBER_CAN0_COMFRX)
     .rx_irq             = VECTOR_NUMBER_CAN0_COMFRX,

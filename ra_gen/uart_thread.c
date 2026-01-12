@@ -46,7 +46,8 @@ const sci_uart_extended_cfg_t RS232_cfg_extend = { .clock = SCI_UART_CLOCK_INT,
 /** UART interface configuration */
 const uart_cfg_t RS232_cfg = { .channel = 5, .data_bits = UART_DATA_BITS_8,
 		.parity = UART_PARITY_OFF, .stop_bits = UART_STOP_BITS_1, .p_callback =
-				NULL, .p_context = NULL, .p_extend = &RS232_cfg_extend,
+				RS232_callback, .p_context = NULL,
+		.p_extend = &RS232_cfg_extend,
 #define RA_NOT_DEFINED (1)
 #if (RA_NOT_DEFINED == RA_NOT_DEFINED)
 		.p_transfer_tx = NULL,
@@ -117,7 +118,8 @@ const sci_uart_extended_cfg_t RS485_cfg_extend = { .clock = SCI_UART_CLOCK_INT,
 /** UART interface configuration */
 const uart_cfg_t RS485_cfg = { .channel = 0, .data_bits = UART_DATA_BITS_8,
 		.parity = UART_PARITY_OFF, .stop_bits = UART_STOP_BITS_1, .p_callback =
-				NULL, .p_context = NULL, .p_extend = &RS485_cfg_extend,
+				RS232_callback, .p_context = NULL,
+		.p_extend = &RS485_cfg_extend,
 #define RA_NOT_DEFINED (1)
 #if (RA_NOT_DEFINED == RA_NOT_DEFINED)
 		.p_transfer_tx = NULL,

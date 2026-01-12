@@ -68,6 +68,11 @@
     <pincfg active="true" name="" symbol="">
       <configSetting altId="debug0.swclk.p300" configurationId="debug0.swclk" isUsedByDriver="true" peripheral="DEBUG0"/>
       <configSetting altId="debug0.swdio.p108" configurationId="debug0.swdio" isUsedByDriver="true" peripheral="DEBUG0"/>
+      <configSetting altId="p210.output.low" configurationId="p210"/>
+      <configSetting altId="rtc0.rtcic0.p402" configurationId="rtc0.rtcic0" isUsedByDriver="true" peripheral="RTC0"/>
+      <configSetting altId="rtc0.rtcic1.p403" configurationId="rtc0.rtcic1" isUsedByDriver="true" peripheral="RTC0"/>
+      <configSetting altId="rtc0.rtcic2.p404" configurationId="rtc0.rtcic2" isUsedByDriver="true" peripheral="RTC0"/>
+      <configSetting altId="rtc0.rtcout.p407" configurationId="rtc0.rtcout" isUsedByDriver="true" peripheral="RTC0"/>
       <configSetting altId="sci0.rxd.p100" configurationId="sci0.rxd" isUsedByDriver="true" peripheral="SCI0"/>
       <configSetting altId="sci0.txd.p101" configurationId="sci0.txd" isUsedByDriver="true" peripheral="SCI0"/>
       <configSetting altId="sci5.rxd.p502" configurationId="sci5.rxd" isUsedByDriver="true" peripheral="SCI5"/>
