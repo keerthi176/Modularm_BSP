@@ -61,12 +61,21 @@ ra/aws/FreeRTOS/FreeRTOS/Source/portable/MemMang \
 ra/fsp/src/bsp/cmsis/Device/RENESAS/Source \
 ra/fsp/src/bsp/mcu/all \
 ra/fsp/src/bsp/mcu/ra6m5 \
+ra/fsp/src/r_adc \
 ra/fsp/src/r_canfd \
+ra/fsp/src/r_iic_master \
 ra/fsp/src/r_ioport \
 ra/fsp/src/r_sci_uart \
 ra/fsp/src/rm_freertos_port \
 ra_gen \
+src/Drivers/ADC/src \
+src/Drivers/CAN_Comm/src \
+src/Drivers/EEPROM/src \
 src/Drivers/GPIO/src \
 src/Drivers/RS232/src \
+src/Drivers/RTC/src \
+src/SCK/SCK_CAN/src \
+src/SCK/SCK_RS232/src \
+src/SEGGER_RTT \
 src \
 

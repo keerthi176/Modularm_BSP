@@ -10,14 +10,23 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include src/SEGGER_RTT/subdir.mk
+-include src/SCK/SCK_RS232/src/subdir.mk
+-include src/SCK/SCK_CAN/src/subdir.mk
+-include src/Drivers/RTC/src/subdir.mk
 -include src/Drivers/RS232/src/subdir.mk
 -include src/Drivers/GPIO/src/subdir.mk
+-include src/Drivers/EEPROM/src/subdir.mk
+-include src/Drivers/CAN_Comm/src/subdir.mk
+-include src/Drivers/ADC/src/subdir.mk
 -include src/subdir.mk
 -include ra_gen/subdir.mk
 -include ra/fsp/src/rm_freertos_port/subdir.mk
 -include ra/fsp/src/r_sci_uart/subdir.mk
 -include ra/fsp/src/r_ioport/subdir.mk
+-include ra/fsp/src/r_iic_master/subdir.mk
 -include ra/fsp/src/r_canfd/subdir.mk
+-include ra/fsp/src/r_adc/subdir.mk
 -include ra/fsp/src/bsp/mcu/ra6m5/subdir.mk
 -include ra/fsp/src/bsp/mcu/all/subdir.mk
 -include ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/subdir.mk
@@ -100,7 +109,7 @@ all: Modualrm_BSP.elf secondary-outputs
 
 # Tool invocations
 Modualrm_BSP.elf: $(OBJS) $(USER_OBJS) $(LIBRARY_GENERATOR_OUTPUTTYPE_OUTPUTS) $(LINKER_SCRIPT)
-	$(file > Modualrm_BSP.elf.in,-mcpu=cortex-m33 -mthumb -mlittle-endian -mfloat-abi=hard -mfpu=fpv5-sp-d16 -O2 -ffunction-sections -fdata-sections -fno-strict-aliasing -fmessage-length=0 -funsigned-char -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Waggregate-return -Wno-parentheses-equality -Wfloat-equal -g3 -o "Modualrm_BSP.elf" $(OBJS) $(USER_OBJS) -T "fsp.lld" -L"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject/script" -L"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Debug" -Wl,-Map=Modualrm_BSP.map -Wl,--start-group -lcrt0 -lc++abi  -Wl,--end-group -Wl,--gc-sections -Wl,--cref -Wl,-z,norelro -Wl,--icf=none -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra_gen" -I"." -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra_cfg\\fsp_cfg\\bsp" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra_cfg\\fsp_cfg" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra_cfg\\aws" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\src" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra\\fsp\\inc" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra\\fsp\\inc\\api" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra\\fsp\\inc\\instances" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra\\fsp\\src\\rm_freertos_port" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra\\aws\\FreeRTOS\\FreeRTOS\\Source\\include" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\ra\\arm\\CMSIS_6\\CMSIS\\Core\\Include")
+	$(file > Modualrm_BSP.elf.in,-mcpu=cortex-m33 -mthumb -mlittle-endian -mfloat-abi=hard -mfpu=fpv5-sp-d16 -O2 -ffunction-sections -fdata-sections -fno-strict-aliasing -fmessage-length=0 -funsigned-char -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Waggregate-return -Wno-parentheses-equality -Wfloat-equal -g3 -o "Modualrm_BSP.elf" $(OBJS) $(USER_OBJS) -T "fsp.lld" -L"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Modularm_ControlBoard_BSP/script" -L"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Modularm_ControlBoard_BSP\\Debug" -Wl,-Map=Modualrm_BSP.map -Wl,--start-group -lcrt0 -lc++abi  -Wl,--end-group -Wl,--gc-sections -Wl,--cref -Wl,-z,norelro -Wl,--icf=none -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Modularm_ControlBoard_BSP\\ra_gen" -I"." -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Modularm_ControlBoard_BSP\\ra_cfg\\fsp_cfg\\bsp" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Modularm_ControlBoard_BSP\\ra_cfg\\fsp_cfg" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Modularm_ControlBoard_BSP\\ra_cfg\\aws" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Modularm_ControlBoard_BSP\\src" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Modularm_ControlBoard_BSP\\ra\\fsp\\inc" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Modularm_ControlBoard_BSP\\ra\\fsp\\inc\\api" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Modularm_ControlBoard_BSP\\ra\\fsp\\inc\\instances" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Modularm_ControlBoard_BSP\\ra\\fsp\\src\\rm_freertos_port" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Modularm_ControlBoard_BSP\\ra\\aws\\FreeRTOS\\FreeRTOS\\Source\\include" -I"D:\\ModularmProject\\Technosoft_Repo2\\KB_Bringup_project_repo\\KB_BringUpProject\\Modularm_ControlBoard_BSP\\ra\\arm\\CMSIS_6\\CMSIS\\Core\\Include")
 	@echo Building target: $@ && clang  --target=arm-none-eabi @"Modualrm_BSP.elf.in"> Modualrm_BSP.cref
 Modualrm_BSP.srec: Modualrm_BSP.elf
 	llvm-objcopy "Modualrm_BSP.elf" -O srec  "Modualrm_BSP.srec"

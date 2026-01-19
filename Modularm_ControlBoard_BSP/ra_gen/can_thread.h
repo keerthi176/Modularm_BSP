@@ -15,11 +15,11 @@ extern void can_thread_entry(void *pvParameters);
 #include "r_can_api.h"
 FSP_HEADER
 /** CANFD on CANFD Instance. */
-extern const can_instance_t g_canfd0;
+extern const can_instance_t g_canfd1;
 /** Access the CANFD instance using these structures when calling API functions directly (::p_api is not used). */
-extern canfd_instance_ctrl_t g_canfd0_ctrl;
-extern const can_cfg_t g_canfd0_cfg;
-extern const canfd_extended_cfg_t g_canfd0_cfg_extend;
+extern canfd_instance_ctrl_t g_canfd1_ctrl;
+extern const can_cfg_t g_canfd1_cfg;
+extern const canfd_extended_cfg_t g_canfd1_cfg_extend;
 
 #ifndef canfd_callback
 void canfd_callback(can_callback_args_t *p_args);

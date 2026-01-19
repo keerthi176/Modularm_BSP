@@ -26,4 +26,8 @@
 #include <time.h>
 #include "math.h"
 
+#include "hal_data.h"
+
+#include "SEGGER_RTT/SEGGER_RTT.h"
+
 #endif /* UTILS_COMMON_HEADERS_H_ */

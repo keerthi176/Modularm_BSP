@@ -256,8 +256,12 @@
       <description>SCI UART</description>
       <originalPack>Renesas.RA.6.2.0.pack</originalPack>
     </component>
-    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_rtc" variant="" vendor="Renesas" version="6.2.0">
-      <description>Real Time Clock</description>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_adc" variant="" vendor="Renesas" version="6.2.0">
+      <description>A/D Converter</description>
+      <originalPack>Renesas.RA.6.2.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_iic_master" variant="" vendor="Renesas" version="6.2.0">
+      <description>I2C Master Interface</description>
       <originalPack>Renesas.RA.6.2.0.pack</originalPack>
     </component>
     <component apiversion="" class="Heaps" condition="" group="FreeRTOS" subgroup="heap_1" variant="" vendor="AWS" version="11.1.0+fsp.6.2.0">
@@ -279,8 +283,8 @@
     </module>
     <module id="module.middleware.rm_freertos_port.0"/>
     <module id="module.driver.canfd_on_canfd.1632529601">
-      <property id="module.driver.canfd.name" value="g_canfd0"/>
-      <property id="module.driver.canfd.channel" value="0"/>
+      <property id="module.driver.canfd.name" value="g_canfd1"/>
+      <property id="module.driver.canfd.channel" value="1"/>
       <property id="module.driver.canfd.bitrate.automatic.nominal_rate" value="500000"/>
       <property id="module.driver.canfd.bitrate.automatic.data_rate" value="2000000"/>
       <property id="module.driver.canfd.bitrate.automatic.sample_point" value="75"/>
@@ -298,7 +302,7 @@
       <property id="module.driver.canfd.txmb.int" value=""/>
       <property id="module.driver.canfd.ch_err.int" value=""/>
       <property id="module.driver.canfd.ipl" value="board.icu.common.irq.priority12"/>
-      <property id="module.driver.canfd.afl_array" value="p_canfd0_afl"/>
+      <property id="module.driver.canfd.afl_array" value="p_canfd1_afl"/>
     </module>
     <module id="module.driver.uart_on_sci_uart.1544727666">
       <property id="module.driver.uart.name" value="RS485"/>
@@ -359,24 +363,64 @@
       <property id="module.driver.uart.eri_ipl" value="board.icu.common.irq.priority12"/>
     </module>
     <module id="module.freertos.heap.1.594706016"/>
-    <module id="module.driver.rtc_on_rtc.693862313">
-      <property id="module.driver.rtc.name" value="g_rtc0"/>
-      <property id="module.driver.rtc.clock_source" value="module.driver.rtc.clock_source.clock_source_loco"/>
-      <property id="module.driver.rtc.freq_cmpr_value_loco" value="255"/>
-      <property id="module.driver.rtc.err_adjustment_mode" value="module.driver.rtc.err_adjustment_mode.m1"/>
-      <property id="module.driver.rtc.err_adjustment_period" value="module.driver.rtc.err_adjustment_period.p1"/>
-      <property id="module.driver.rtc.err_adjustment_type" value="module.driver.rtc.err_adjustment_type.t1"/>
-      <property id="module.driver.rtc.err_adjustment_value" value="0"/>
-      <property id="module.driver.rtc.p_callback" value="NULL"/>
-      <property id="module.driver.rtc.alarm_ipl" value="_disabled"/>
-      <property id="module.driver.rtc.periodic_ipl" value="_disabled"/>
-      <property id="module.driver.rtc.carry_ipl" value="board.icu.common.irq.priority12"/>
+    <module id="module.driver.i2c_on_iic_master.864507871">
+      <property id="module.driver.i2c_master.name" value="g_i2c_rtc"/>
+      <property id="module.driver.i2c_master.channel" value="2"/>
+      <property id="module.driver.i2c_master.rate" value="module.driver.i2c_master.rate.rate_standard"/>
+      <property id="module.driver.i2c_master.rate_value" value="0"/>
+      <property id="module.driver.i2c_master.rise_time_ns" value="120"/>
+      <property id="module.driver.i2c_master.fall_time_ns" value="120"/>
+      <property id="module.driver.i2c_master.duty" value="50"/>
+      <property id="module.driver.i2c_master.slave" value="0x51"/>
+      <property id="module.driver.i2c_master.addr_mode" value="module.driver.i2c_master.addr_mode.addr_mode_7bit"/>
+      <property id="module.driver.i2c_master.timeout_mode" value="module.driver.i2c_master.timeout_mode.short_mode"/>
+      <property id="module.driver.i2c_master.timeout_scl_low" value="module.driver.i2c_master.timeout_scl_low.enabled"/>
+      <property id="module.driver.i2c_master.p_callback" value="rtc_i2c_callback"/>
+      <property id="module.driver.i2c_master.ipl" value="board.icu.common.irq.priority12"/>
+    </module>
+    <module id="module.driver.adc_on_adc.1660744353">
+      <property id="module.driver.adc.name" value="g_adc0"/>
+      <property id="module.driver.adc.unit" value="0"/>
+      <property id="module.driver.adc.resolution" value="module.driver.adc.resolution.resolution_12_bit"/>
+      <property id="module.driver.adc.alignment" value="module.driver.adc.alignment.alignment_right"/>
+      <property id="module.driver.adc.clearing" value="module.driver.adc.clearing.clear_after_read_on"/>
+      <property id="module.driver.adc.mode" value="module.driver.adc.mode.mode_continuous_scan"/>
+      <property id="module.driver.adc.mode.dt" value="module.driver.adc.mode.dt.disabled"/>
+      <property id="module.driver.adc.scan_mask" value="module.driver.adc.scan_mask.channel_0,module.driver.adc.scan_mask.channel_1,module.driver.adc.scan_mask.channel_2"/>
+      <property id="module.driver.adc.scan_mask_group_b" value=""/>
+      <property id="module.driver.adc.trigger" value="enum.driver.adc.trigger.trigger_software"/>
+      <property id="module.driver.adc.trigger_group_b" value="_disabled"/>
+      <property id="module.driver.adc.priority_group_a" value="module.driver.adc.priority_group_a.group_a_priority_off"/>
+      <property id="module.driver.adc.add_average_count" value="module.driver.adc.add_average_count.add_off"/>
+      <property id="module.driver.adc.adc_vref_control" value="module.driver.adc.adc_vref_control.vrefh"/>
+      <property id="module.driver.adc.add_mask" value=""/>
+      <property id="module.driver.adc.sample_hold_mask" value=""/>
+      <property id="module.driver.adc.sample_hold_states" value="24"/>
+      <property id="module.driver.adc.compare.window_mode" value="module.driver.adc.compare.window_mode.disabled"/>
+      <property id="module.driver.adc.compare.event_mode" value="module.driver.adc.compare.event_mode.or"/>
+      <property id="module.driver.adc.compare.window_a.enable" value="module.driver.adc.compare.window_a.enable.disabled"/>
+      <property id="module.driver.adc.compare.window_a.channels" value=""/>
+      <property id="module.driver.adc.compare.window_a.channel_mode" value=""/>
+      <property id="module.driver.adc.compare.window_a.ref_lower" value="0"/>
+      <property id="module.driver.adc.compare.window_a.ref_upper" value="0"/>
+      <property id="module.driver.adc.compare.window_b.enable" value="module.driver.adc.compare.window_b.enable.disabled"/>
+      <property id="module.driver.adc.compare.window_b.channel" value="module.driver.adc.compare.window_b.channel.channel_0"/>
+      <property id="module.driver.adc.compare.window_b.mode" value="module.driver.adc.compare.window_b.mode.less_outside"/>
+      <property id="module.driver.adc.compare.window_b.ref_lower" value="0"/>
+      <property id="module.driver.adc.compare.window_b.ref_upper" value="0"/>
+      <property id="module.driver.adc.p_callback" value="adc_callback"/>
+      <property id="module.driver.adc.scan_end_ipl" value="board.icu.common.irq.priority13"/>
+      <property id="module.driver.adc.scan_end_b_ipl" value="_disabled"/>
+      <property id="module.driver.adc.window_a_ipl" value="_disabled"/>
+      <property id="module.driver.adc.window_b_ipl" value="_disabled"/>
+      <property id="module.driver.adc.adbuf" value="module.driver.adc.adbuf.disabled"/>
     </module>
     <context id="_hal.0">
       <stack module="module.driver.ioport_on_ioport.0"/>
       <stack module="module.middleware.rm_freertos_port.0"/>
       <stack module="module.freertos.heap.1.594706016"/>
-      <stack module="module.driver.rtc_on_rtc.693862313"/>
+      <stack module="module.driver.i2c_on_iic_master.864507871"/>
+      <stack module="module.driver.adc_on_adc.1660744353"/>
     </context>
     <context id="rtos.awsfreertos.thread.0">
       <property id="_symbol" value="can_thread"/>
@@ -399,6 +443,14 @@
       <stack module="module.driver.uart_on_sci_uart.1544727666"/>
       <stack module="module.driver.uart_on_sci_uart.2115465689"/>
     </context>
+    <config id="config.driver.adc">
+      <property id="config.driver.adc.param_checking_enable" value="config.driver.adc.param_checking_enable.bsp"/>
+    </config>
+    <config id="config.driver.iic_master">
+      <property id="config.driver.iic_master.param_checking_enable" value="config.driver.iic_master.param_checking_enable.bsp"/>
+      <property id="config.driver.iic_master.dtc_enable" value="config.driver.iic_master.dtc_enable.disabled"/>
+      <property id="config.driver.iic_master.addr_mode_10_bit_enable" value="config.driver.iic_master.addr_mode_10_bit_enable.disabled"/>
+    </config>
     <config id="config.driver.sci_uart">
       <property id="config.driver.sci_uart.param_checking_enable" value="config.driver.sci_uart.param_checking_enable.bsp"/>
       <property id="config.driver.sci_uart.fifo_support" value="config.driver.sci_uart.fifo_support.disabled"/>
@@ -533,7 +585,7 @@
       <property id="config.driver.canfd.commonfifo.5.interval_source" value="config.driver.canfd.commonfifo.5.interval_source.refclk"/>
       <property id="config.driver.canfd.commonfifo.5.refclk_resolution" value="config.driver.canfd.commonfifo.5.refclk_resolution.1"/>
       <property id="config.driver.canfd.afl.ch0_num" value="32"/>
-      <property id="config.driver.canfd.afl.ch1_num" value="0"/>
+      <property id="config.driver.canfd.afl.ch1_num" value="32"/>
     </config>
     <config id="config.driver.ioport">
       <property id="config.driver.ioport.checking" value="config.driver.ioport.checking.system"/>
@@ -607,48 +659,122 @@
       <property id="config.awsfreertos.thread.debug_logging_name" value="Log Name"/>
       <property id="config.awsfreertos.thread.logging_level" value="config.awsfreertos.thread.logging_level.log_none"/>
     </config>
-    <config id="config.driver.rtc">
-      <property id="config.driver.rtc.param_checking_enable" value="config.driver.rtc.param_checking_enable.bsp"/>
-      <property id="config.driver.rtc.open_set_source_clock" value="config.driver.rtc.open_set_source_clock.enabled"/>
-    </config>
   </raModuleConfiguration>
   <raPinConfiguration>
+    <symbolicName propertyId="p015.symbolic_name" value="OCCDET1"/>
+    <symbolicName propertyId="p114.symbolic_name" value="HW_VER_1"/>
+    <symbolicName propertyId="p115.symbolic_name" value="HW_VER_2"/>
+    <symbolicName propertyId="p200.symbolic_name" value="RECOVERY_PUSH_BUTTON"/>
     <symbolicName propertyId="p210.symbolic_name" value="MCU_LED"/>
+    <symbolicName propertyId="p211.symbolic_name" value="CAN_TERM_EN"/>
+    <symbolicName propertyId="p214.symbolic_name" value="HW_VER_0"/>
+    <symbolicName propertyId="p400.symbolic_name" value="LIGHTS_OFF"/>
+    <symbolicName propertyId="p401.symbolic_name" value="LIGHTS_ON"/>
+    <symbolicName propertyId="p402.symbolic_name" value="ALARM_RLY_ON"/>
+    <symbolicName propertyId="p403.symbolic_name" value="ALARM_RLY_OFF"/>
+    <symbolicName propertyId="p404.symbolic_name" value="IP1_BUZZER"/>
+    <symbolicName propertyId="p406.symbolic_name" value="DOOR_IN"/>
+    <symbolicName propertyId="p412.symbolic_name" value="RS485_RTS"/>
+    <symbolicName propertyId="p500.symbolic_name" value="IP_IN"/>
+    <symbolicName propertyId="p608.symbolic_name" value="HW_VER_3"/>
+    <comment propertyId="p015.comment" value="Occupancy Detection"/>
+    <comment propertyId="p114.comment" value="Hardware Revision Bit 1"/>
+    <comment propertyId="p115.comment" value="Hardware Revision Bit 2"/>
+    <comment propertyId="p200.comment" value="Recovery Push Button"/>
     <comment propertyId="p210.comment" value="MCU_LED"/>
+    <comment propertyId="p211.comment" value="CAN 120Ω Termination"/>
+    <comment propertyId="p214.comment" value="Hardware Revision Bit 0"/>
+    <comment propertyId="p400.comment" value="AC Lighting Relay - Reset"/>
+    <comment propertyId="p401.comment" value="AC Lighting Relay - Set"/>
+    <comment propertyId="p402.comment" value="Alarm Relay - Set"/>
+    <comment propertyId="p403.comment" value="Alarm Relay - Reset"/>
+    <comment propertyId="p404.comment" value="Piezo Buzzer"/>
+    <comment propertyId="p406.comment" value="Door Magnet Switch"/>
+    <comment propertyId="p412.comment" value="RS-485 Transmit Enable"/>
+    <comment propertyId="p500.comment" value="Generic Digital Input"/>
+    <comment propertyId="p608.comment" value="Hardware Revision Bit 3"/>
     <pincfg active="true" name="R7FA6M5BF3CFP.pincfg" selected="true" symbol="g_bsp_pin_cfg">
+      <configSetting altId="adc0.an00.p000" configurationId="adc0.an00"/>
+      <configSetting altId="adc0.an01.p001" configurationId="adc0.an01"/>
+      <configSetting altId="adc0.an02.p002" configurationId="adc0.an02"/>
+      <configSetting altId="adc0.mode.custom" configurationId="adc0.mode"/>
+      <configSetting altId="can1.crx.p110" configurationId="can1.crx"/>
+      <configSetting altId="can1.ctx.p109" configurationId="can1.ctx"/>
+      <configSetting altId="can1.mode.enabled.free" configurationId="can1.mode"/>
       <configSetting altId="debug0.mode.swd" configurationId="debug0.mode"/>
       <configSetting altId="debug0.swclk.p300" configurationId="debug0.swclk"/>
       <configSetting altId="debug0.swdio.p108" configurationId="debug0.swdio"/>
-      <configSetting altId="p100.sci0.rxd" configurationId="p100"/>
-      <configSetting altId="p100.gpio_mode.gpio_mode_peripheral" configurationId="p100.gpio_mode"/>
-      <configSetting altId="p101.sci0.txd" configurationId="p101"/>
-      <configSetting altId="p101.gpio_mode.gpio_mode_peripheral" configurationId="p101.gpio_mode"/>
+      <configSetting altId="iic2.mode.enabled.b" configurationId="iic2.mode"/>
+      <configSetting altId="iic2.pairing.b" configurationId="iic2.pairing"/>
+      <configSetting altId="iic2.scl.p415" configurationId="iic2.scl"/>
+      <configSetting altId="iic2.sda.p414" configurationId="iic2.sda"/>
+      <configSetting altId="p000.asel" configurationId="p000"/>
+      <configSetting altId="p000.gpio_mode.gpio_mode_an" configurationId="p000.gpio_mode"/>
+      <configSetting altId="p001.asel" configurationId="p001"/>
+      <configSetting altId="p001.gpio_mode.gpio_mode_an" configurationId="p001.gpio_mode"/>
+      <configSetting altId="p002.asel" configurationId="p002"/>
+      <configSetting altId="p002.gpio_mode.gpio_mode_an" configurationId="p002.gpio_mode"/>
+      <configSetting altId="p015.input" configurationId="p015"/>
+      <configSetting altId="p015.gpio_mode.gpio_mode_in" configurationId="p015.gpio_mode"/>
+      <configSetting altId="p015.gpio_pupd.gpio_pupd_ip_up" configurationId="p015.gpio_pupd"/>
       <configSetting altId="p108.debug0.swdio" configurationId="p108"/>
       <configSetting altId="p108.gpio_mode.gpio_mode_peripheral" configurationId="p108.gpio_mode"/>
+      <configSetting altId="p109.can1.ctx" configurationId="p109"/>
+      <configSetting altId="p109.gpio_mode.gpio_mode_peripheral" configurationId="p109.gpio_mode"/>
+      <configSetting altId="p110.can1.crx" configurationId="p110"/>
+      <configSetting altId="p110.gpio_mode.gpio_mode_peripheral" configurationId="p110.gpio_mode"/>
+      <configSetting altId="p114.input" configurationId="p114"/>
+      <configSetting altId="p114.gpio_mode.gpio_mode_in" configurationId="p114.gpio_mode"/>
+      <configSetting altId="p115.input" configurationId="p115"/>
+      <configSetting altId="p115.gpio_mode.gpio_mode_in" configurationId="p115.gpio_mode"/>
+      <configSetting altId="p200.input" configurationId="p200"/>
+      <configSetting altId="p200.gpio_irq.gpio_irq_enabled" configurationId="p200.gpio_irq"/>
+      <configSetting altId="p200.gpio_mode.gpio_mode_in" configurationId="p200.gpio_mode"/>
       <configSetting altId="p210.output.low" configurationId="p210"/>
       <configSetting altId="p210.gpio_mode.gpio_mode_out.low" configurationId="p210.gpio_mode"/>
+      <configSetting altId="p211.output.low" configurationId="p211"/>
+      <configSetting altId="p211.gpio_mode.gpio_mode_out.low" configurationId="p211.gpio_mode"/>
+      <configSetting altId="p214.input" configurationId="p214"/>
+      <configSetting altId="p214.gpio_mode.gpio_mode_in" configurationId="p214.gpio_mode"/>
       <configSetting altId="p300.debug0.swclk" configurationId="p300"/>
       <configSetting altId="p300.gpio_mode.gpio_mode_peripheral" configurationId="p300.gpio_mode"/>
-      <configSetting altId="p402.rtc0.rtcic0" configurationId="p402"/>
-      <configSetting altId="p402.gpio_mode.gpio_mode_peripheral" configurationId="p402.gpio_mode"/>
-      <configSetting altId="p403.rtc0.rtcic1" configurationId="p403"/>
-      <configSetting altId="p403.gpio_mode.gpio_mode_peripheral" configurationId="p403.gpio_mode"/>
-      <configSetting altId="p404.rtc0.rtcic2" configurationId="p404"/>
-      <configSetting altId="p404.gpio_mode.gpio_mode_peripheral" configurationId="p404.gpio_mode"/>
-      <configSetting altId="p407.rtc0.rtcout" configurationId="p407"/>
-      <configSetting altId="p407.gpio_mode.gpio_mode_peripheral" configurationId="p407.gpio_mode"/>
+      <configSetting altId="p400.output.low" configurationId="p400"/>
+      <configSetting altId="p400.gpio_mode.gpio_mode_out.low" configurationId="p400.gpio_mode"/>
+      <configSetting altId="p401.output.low" configurationId="p401"/>
+      <configSetting altId="p401.gpio_mode.gpio_mode_out.low" configurationId="p401.gpio_mode"/>
+      <configSetting altId="p402.output.low" configurationId="p402"/>
+      <configSetting altId="p402.gpio_mode.gpio_mode_out.low" configurationId="p402.gpio_mode"/>
+      <configSetting altId="p403.output.low" configurationId="p403"/>
+      <configSetting altId="p403.gpio_mode.gpio_mode_out.low" configurationId="p403.gpio_mode"/>
+      <configSetting altId="p404.output.low" configurationId="p404"/>
+      <configSetting altId="p404.gpio_mode.gpio_mode_out.low" configurationId="p404.gpio_mode"/>
+      <configSetting altId="p406.input" configurationId="p406"/>
+      <configSetting altId="p406.gpio_mode.gpio_mode_in" configurationId="p406.gpio_mode"/>
+      <configSetting altId="p406.gpio_pupd.gpio_pupd_ip_up" configurationId="p406.gpio_pupd"/>
+      <configSetting altId="p410.sci0.rxd" configurationId="p410"/>
+      <configSetting altId="p410.gpio_mode.gpio_mode_peripheral" configurationId="p410.gpio_mode"/>
+      <configSetting altId="p411.sci0.txd" configurationId="p411"/>
+      <configSetting altId="p411.gpio_mode.gpio_mode_peripheral" configurationId="p411.gpio_mode"/>
+      <configSetting altId="p412.output.low" configurationId="p412"/>
+      <configSetting altId="p412.gpio_mode.gpio_mode_out.low" configurationId="p412.gpio_mode"/>
+      <configSetting altId="p414.iic2.sda" configurationId="p414"/>
+      <configSetting altId="p414.gpio_speed.gpio_speed_medium" configurationId="p414.gpio_drivecapacity"/>
+      <configSetting altId="p414.gpio_mode.gpio_mode_peripheral" configurationId="p414.gpio_mode"/>
+      <configSetting altId="p415.iic2.scl" configurationId="p415"/>
+      <configSetting altId="p415.gpio_speed.gpio_speed_medium" configurationId="p415.gpio_drivecapacity"/>
+      <configSetting altId="p415.gpio_mode.gpio_mode_peripheral" configurationId="p415.gpio_mode"/>
+      <configSetting altId="p500.input" configurationId="p500"/>
+      <configSetting altId="p500.gpio_mode.gpio_mode_in" configurationId="p500.gpio_mode"/>
+      <configSetting altId="p500.gpio_pupd.gpio_pupd_ip_up" configurationId="p500.gpio_pupd"/>
       <configSetting altId="p501.sci5.txd" configurationId="p501"/>
       <configSetting altId="p501.gpio_mode.gpio_mode_peripheral" configurationId="p501.gpio_mode"/>
       <configSetting altId="p502.sci5.rxd" configurationId="p502"/>
       <configSetting altId="p502.gpio_mode.gpio_mode_peripheral" configurationId="p502.gpio_mode"/>
-      <configSetting altId="rtc0.mode.enabled" configurationId="rtc0.mode"/>
-      <configSetting altId="rtc0.rtcic0.p402" configurationId="rtc0.rtcic0"/>
-      <configSetting altId="rtc0.rtcic1.p403" configurationId="rtc0.rtcic1"/>
-      <configSetting altId="rtc0.rtcic2.p404" configurationId="rtc0.rtcic2"/>
-      <configSetting altId="rtc0.rtcout.p407" configurationId="rtc0.rtcout"/>
+      <configSetting altId="p608.input" configurationId="p608"/>
+      <configSetting altId="p608.gpio_mode.gpio_mode_in" configurationId="p608.gpio_mode"/>
       <configSetting altId="sci0.mode.asynchronous.free" configurationId="sci0.mode"/>
-      <configSetting altId="sci0.rxd.p100" configurationId="sci0.rxd"/>
-      <configSetting altId="sci0.txd.p101" configurationId="sci0.txd"/>
+      <configSetting altId="sci0.rxd.p410" configurationId="sci0.rxd"/>
+      <configSetting altId="sci0.txd.p411" configurationId="sci0.txd"/>
       <configSetting altId="sci5.mode.asynchronous.free" configurationId="sci5.mode"/>
       <configSetting altId="sci5.rxd.p502" configurationId="sci5.rxd"/>
       <configSetting altId="sci5.txd.p501" configurationId="sci5.txd"/>

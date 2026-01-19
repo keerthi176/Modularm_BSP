@@ -16,6 +16,7 @@
 
 #include <Drivers/RS232/includes/RS232_uart.h>
 #include "uart_thread.h"
+#include "SCK/SCK_RS232/includes/sck_common.h"
 
 //-------------------------------------- Static Variables -------------------------------------------------------------
 
@@ -107,6 +108,8 @@ void RS232_callback(uart_callback_args_t *p_args)
 		case UART_EVENT_TX_COMPLETE:
 			break;
 		case UART_EVENT_RX_CHAR:
+			SCK_Parse_Byte((uint8_t)p_args->data);
+			break;
 		case UART_EVENT_RX_COMPLETE:
 		case UART_EVENT_ERR_PARITY:
 		case UART_EVENT_ERR_FRAMING:

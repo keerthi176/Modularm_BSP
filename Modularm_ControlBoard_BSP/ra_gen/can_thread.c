@@ -16,13 +16,13 @@ void rtos_startup_err_callback(void *p_instance, void *p_data);
 void rtos_startup_common_init(void);
 /* Nominal and Data bit timing configuration */
 
-can_bit_timing_cfg_t g_canfd0_bit_timing_cfg = {
+can_bit_timing_cfg_t g_canfd1_bit_timing_cfg = {
 /* Actual bitrate: 497512 Hz. Actual sample point: 75 %. */
 .baud_rate_prescaler = 1, .time_segment_1 = 49, .time_segment_2 = 17,
 		.synchronization_jump_width = 4 };
 
 #if BSP_FEATURE_CANFD_FD_SUPPORT
-can_bit_timing_cfg_t g_canfd0_data_timing_cfg =
+can_bit_timing_cfg_t g_canfd1_data_timing_cfg =
 {
     /* Actual bitrate: 1960784 Hz. Actual sample point: 76 %. */
     .baud_rate_prescaler = 1,
@@ -32,7 +32,7 @@ can_bit_timing_cfg_t g_canfd0_data_timing_cfg =
 };
 #endif
 
-extern const canfd_afl_entry_t p_canfd0_afl[CANFD_CFG_AFL_CH0_RULE_NUM];
+extern const canfd_afl_entry_t p_canfd1_afl[CANFD_CFG_AFL_CH1_RULE_NUM];
 #ifndef CANFD_PRV_GLOBAL_CFG
 #define CANFD_PRV_GLOBAL_CFG
 
@@ -113,38 +113,38 @@ canfd_global_cfg_t g_canfd_global_cfg = { .global_interrupts =
 
 #endif
 
-canfd_extended_cfg_t g_canfd0_extended_cfg = { .p_afl = p_canfd0_afl,
+canfd_extended_cfg_t g_canfd1_extended_cfg = { .p_afl = p_canfd1_afl,
 		.txmb_txi_enable = (0ULL), .error_interrupts = (0U),
 #if BSP_FEATURE_CANFD_FD_SUPPORT
-    .p_data_timing      = &g_canfd0_data_timing_cfg,
+    .p_data_timing      = &g_canfd1_data_timing_cfg,
 #else
 		.p_data_timing = NULL,
 #endif
 		.delay_compensation = (1), .p_global_cfg = &g_canfd_global_cfg, };
 
-canfd_instance_ctrl_t g_canfd0_ctrl;
-const can_cfg_t g_canfd0_cfg = { .channel = 0, .p_bit_timing =
-		&g_canfd0_bit_timing_cfg, .p_callback = canfd_callback, .p_extend =
-		&g_canfd0_extended_cfg, .p_context = NULL, .ipl = (12),
-#if defined(VECTOR_NUMBER_CAN0_COMFRX)
-    .rx_irq             = VECTOR_NUMBER_CAN0_COMFRX,
+canfd_instance_ctrl_t g_canfd1_ctrl;
+const can_cfg_t g_canfd1_cfg = { .channel = 1, .p_bit_timing =
+		&g_canfd1_bit_timing_cfg, .p_callback = canfd_callback, .p_extend =
+		&g_canfd1_extended_cfg, .p_context = NULL, .ipl = (12),
+#if defined(VECTOR_NUMBER_CAN1_COMFRX)
+    .rx_irq             = VECTOR_NUMBER_CAN1_COMFRX,
 #else
 		.rx_irq = FSP_INVALID_VECTOR,
 #endif
-#if defined(VECTOR_NUMBER_CAN0_TX)
-    .tx_irq             = VECTOR_NUMBER_CAN0_TX,
+#if defined(VECTOR_NUMBER_CAN1_TX)
+    .tx_irq             = VECTOR_NUMBER_CAN1_TX,
 #else
 		.tx_irq = FSP_INVALID_VECTOR,
 #endif
-#if defined(VECTOR_NUMBER_CAN0_CHERR)
-    .error_irq             = VECTOR_NUMBER_CAN0_CHERR,
+#if defined(VECTOR_NUMBER_CAN1_CHERR)
+    .error_irq             = VECTOR_NUMBER_CAN1_CHERR,
 #else
 		.error_irq = FSP_INVALID_VECTOR,
 #endif
 		};
 /* Instance structure to use this module. */
-const can_instance_t g_canfd0 = { .p_ctrl = &g_canfd0_ctrl, .p_cfg =
-		&g_canfd0_cfg, .p_api = &g_canfd_on_canfd };
+const can_instance_t g_canfd1 = { .p_ctrl = &g_canfd1_ctrl, .p_cfg =
+		&g_canfd1_cfg, .p_api = &g_canfd_on_canfd };
 extern uint32_t g_fsp_common_thread_count;
 
 const rm_freertos_port_parameters_t can_thread_parameters = { .p_context =

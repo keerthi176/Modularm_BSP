@@ -3,40 +3,30 @@
 * Redistribution and use in source and binary forms, with or without
 * modification, are not permitted.
 *
-* Filename:			GPIO_driver.h
-* Creation Date:	Jan 06, 2026
+* Filename:			eeprom_driver.c
+* Creation Date:	Jan 13, 2026
 * Author:			Keerthi Mallesh
 *
-* Description:	This file is responsible for creating the GPIO driver.
+* Description:	This file is responsible for creating the eeprom driver.
 *
 *********************************************************************/
 
-#ifndef DRIVERS_GPIO_DRIVER_H_
-#define DRIVERS_GPIO_DRIVER_H_
+#ifndef DRIVERS_EEPROM_INCLUDES_EEPROM_DRIVER_H_
+#define DRIVERS_EEPROM_INCLUDES_EEPROM_DRIVER_H_
 
 #include "hal_data.h"
-//#include "common_headers.h"
-
-//=====================================================================================================================
-//-------------------------------------- Private Step Sequence --------------------------------------------------------
-//=====================================================================================================================
-typedef enum
-{
-	LED_PIN	= BSP_IO_PORT_02_PIN_10,
-
-} gpio_t;
+#include <utils/includes/common_headers.h>
 
 //=====================================================================================================================
 //-------------------------------------- Constant Macros -------------------------------------------------------------
 //=====================================================================================================================
-#define TEN_SECONDS_DELAY					(10.0)
+#define EEPROM_BASE_ADDR				0x50
+#define EEPROM_PAGE_SIZE				256
 
 //=====================================================================================================================
 //-------------------------------------- function Declaration ---------------------------------------------------------
 //=====================================================================================================================
-void GPIO_init();
-void GPIO_ON(gpio_t pin);
-void GPIO_OFF(gpio_t pin);
-void GPIO_Toggle(gpio_t pin);
+fsp_err_t EEPROM_WriteByte(uint32_t memory_address, uint8_t data);
+fsp_err_t EEPROM_ReadByte(uint32_t memory_address, uint8_t *p_data);
 
-#endif /* DRIVERS_GPIO_DRIVER_H_ */
+#endif
