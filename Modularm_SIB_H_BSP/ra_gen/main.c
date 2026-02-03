@@ -9,6 +9,8 @@ extern void eeprom_thread_create(void);
 extern TaskHandle_t eeprom_thread;
 extern void rtc_thread_create(void);
 extern TaskHandle_t rtc_thread;
+extern void can_thread_create(void);
+extern TaskHandle_t can_thread;
 uint32_t g_fsp_common_thread_count;
 bool g_fsp_common_initialized;
 SemaphoreHandle_t g_fsp_common_initialized_semaphore;
@@ -109,6 +111,7 @@ int main(void)
     RS232_Thread_create ();
     eeprom_thread_create ();
     rtc_thread_create ();
+    can_thread_create ();
 
     /* Start the scheduler. */
     vTaskStartScheduler ();

@@ -13,32 +13,46 @@
 *********************************************************************/
 
 //-------------------------------------- Includes -----------------------------------------------
-#include "can_sck_common.h"
-#include "sck_common.h"
+#include "SCK/SCK_CAN/includes/can_sck_common.h"
+#include "SCK/includes/sck_common.h"
+#include <SCK/includes/sck_protocol.h>
 
 /*************************************************************
- Function Name:  SCK_Send_Response(uint8_t tid, uint16_t status,
- 	 	 	 	 const uint8_t *payload, uint16_t len)
+ Function Name:  SCK_Send_Response(uint8_t destination_id,
+ 	 	 	 	 uint8_t tid, uint16_t command, const
+ 	 	 	 	 uint8_t *payload, uint16_t len)
+
  Description:    function for message transmit the CAN message.
  Inputs:         uint8_t tid, uint16_t status,
  	 	 	 	 const uint8_t *payload, uint16_t len.
  Outputs:        void.
  Author:		 Keerthi Mallesh
 ****************************************************************/
-void SCK_Send_Response(uint8_t tid, uint16_t status, const uint8_t *payload, uint16_t len)
+void SCK_CAN_Send_Response( uint8_t destination_id, uint8_t tid, uint16_t command, const uint8_t *payload, uint16_t len )
 {
-    can_frame_t frame = {0};
+	can_frame_t frame = {0};
 
-    frame.id  = CAN_ID_SCK(CAN_NODE_CONTROL, CAN_NODE_BROADCAST);
-    frame.data_length_code = 4 + len;
+	frame.id = CAN_ID_SCK(NODE_ID_MAIN_CONTROLLER, destination_id);
 
-    frame.data[0] = tid;
-    frame.data[1] = SCK_TYPE_STATUS;
-    frame.data[2] = status & 0xFF;
-    frame.data[3] = status >> 8;
+	uint16_t total_dlc = 4 + len;
 
-    for (uint8_t i = 0; i < len; i++)
+	if ( total_dlc > 8 )
+	{
+		total_dlc = 8;
+	}
+
+	frame.data_length_code = (uint8_t)total_dlc;
+
+	frame.data[0] = tid;
+	frame.data[1] = SCK_TYPE_COMMAND;
+	frame.data[2] = command & 0xFF;
+	frame.data[3] = command >> 8;
+
+	for (uint8_t i = 0; i < len; i++)
+	{
         frame.data[4 + i] = payload[i];
+	}
 
-    CAN_Driver_Send(&frame);
+//    CAN_Driver_Send(&frame);
+
 }

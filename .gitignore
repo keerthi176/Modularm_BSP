@@ -11,6 +11,8 @@
 *.map
 *.srec
 *.bin
+*.o.in
+*.sbd
 
 # e2studio project files
 .cproject

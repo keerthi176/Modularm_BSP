@@ -4,19 +4,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../src/SCK/SCK_RS232/src/sck_crc.c \
-../src/SCK/SCK_RS232/src/sck_manager.c 
+../src/SCK/SCK_RS232/src/sck_RS232_parser.c \
+../src/SCK/SCK_RS232/src/sck_rs232_tx.c 
 
 C_DEPS += \
-./src/SCK/SCK_RS232/src/sck_crc.d \
-./src/SCK/SCK_RS232/src/sck_manager.d 
+./src/SCK/SCK_RS232/src/sck_RS232_parser.d \
+./src/SCK/SCK_RS232/src/sck_rs232_tx.d 
 
 CREF += \
 Modualrm_BSP.cref 
 
 OBJS += \
-./src/SCK/SCK_RS232/src/sck_crc.o \
-./src/SCK/SCK_RS232/src/sck_manager.o 
+./src/SCK/SCK_RS232/src/sck_RS232_parser.o \
+./src/SCK/SCK_RS232/src/sck_rs232_tx.o 
 
 MAP += \
 Modualrm_BSP.map 

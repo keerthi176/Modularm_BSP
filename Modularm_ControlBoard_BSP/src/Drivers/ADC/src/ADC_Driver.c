@@ -17,7 +17,6 @@
 #include <Drivers/ADC/includes/ADC_Driver.h>
 
 /*************************************************************
-
  Function Name:  ADC_Init(void)
  Description:    initialization of the ADC.
  Inputs:         NULL.
@@ -44,7 +43,6 @@ void ADC_Init(void)
 }
 
 /*************************************************************
-
  Function Name:  ADC_Read(float *temp_volts, float *v24,
  	 	 	 	 	 	 float *v12)
  Description:    ADC Read.
@@ -68,7 +66,6 @@ void ADC_Read(float *temp_volts, float *v24, float *v12)
 }
 
 /*************************************************************
-
  Function Name:  adc_callback(adc_callback_args_t *p_args)
  Description:    ADC Callback.
  Inputs:         adc_callback_args_t *p_args.

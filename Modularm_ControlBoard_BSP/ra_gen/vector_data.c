@@ -22,6 +22,8 @@
             [15] = sci_uart_txi_isr, /* SCI5 TXI (Transmit data empty) */
             [16] = sci_uart_tei_isr, /* SCI5 TEI (Transmit end) */
             [17] = sci_uart_eri_isr, /* SCI5 ERI (Receive error) */
+            [18] = r_icu_isr, /* ICU IRQ1 (External pin interrupt 1) */
+            [19] = r_icu_isr, /* ICU IRQ11 (External pin interrupt 11) */
         };
         #if BSP_FEATURE_ICU_HAS_IELSR
         const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_NUM_ENTRIES] =
@@ -44,6 +46,8 @@
             [15] = BSP_PRV_VECT_ENUM(EVENT_SCI5_TXI,GROUP7), /* SCI5 TXI (Transmit data empty) */
             [16] = BSP_PRV_VECT_ENUM(EVENT_SCI5_TEI,GROUP0), /* SCI5 TEI (Transmit end) */
             [17] = BSP_PRV_VECT_ENUM(EVENT_SCI5_ERI,GROUP1), /* SCI5 ERI (Receive error) */
+            [18] = BSP_PRV_VECT_ENUM(EVENT_ICU_IRQ1,GROUP2), /* ICU IRQ1 (External pin interrupt 1) */
+            [19] = BSP_PRV_VECT_ENUM(EVENT_ICU_IRQ11,GROUP3), /* ICU IRQ11 (External pin interrupt 11) */
         };
         #endif
         #endif

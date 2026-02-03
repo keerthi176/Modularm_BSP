@@ -63,6 +63,7 @@ ra/fsp/src/bsp/mcu/all \
 ra/fsp/src/bsp/mcu/ra6m5 \
 ra/fsp/src/r_adc \
 ra/fsp/src/r_canfd \
+ra/fsp/src/r_icu \
 ra/fsp/src/r_iic_master \
 ra/fsp/src/r_ioport \
 ra/fsp/src/r_sci_uart \
@@ -74,8 +75,10 @@ src/Drivers/EEPROM/src \
 src/Drivers/GPIO/src \
 src/Drivers/RS232/src \
 src/Drivers/RTC/src \
+src/Drivers/sensors/door_sensor/src \
 src/SCK/SCK_CAN/src \
 src/SCK/SCK_RS232/src \
+src/SCK/src \
 src/SEGGER_RTT \
 src \
 

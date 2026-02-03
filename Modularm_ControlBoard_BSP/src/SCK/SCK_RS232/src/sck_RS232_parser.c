@@ -134,6 +134,7 @@ void SCK_RS232_Parse_Byte(uint8_t byte)
             if (byte == SCK_FRAME_END &&
                 ctx->crc_calc == ctx->crc_rx)
             {
+            	ctx->frame.interface = SCK_INTERFACE_RS232;
                 SCK_Process_Received_Frame(&ctx->frame);
             }
             ctx->state = SCK_STATE_STX;

@@ -11,8 +11,10 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include src/SEGGER_RTT/subdir.mk
+-include src/SCK/src/subdir.mk
 -include src/SCK/SCK_RS232/src/subdir.mk
 -include src/SCK/SCK_CAN/src/subdir.mk
+-include src/Drivers/sensors/door_sensor/src/subdir.mk
 -include src/Drivers/RTC/src/subdir.mk
 -include src/Drivers/RS232/src/subdir.mk
 -include src/Drivers/GPIO/src/subdir.mk
@@ -25,6 +27,7 @@ RM := rm -rf
 -include ra/fsp/src/r_sci_uart/subdir.mk
 -include ra/fsp/src/r_ioport/subdir.mk
 -include ra/fsp/src/r_iic_master/subdir.mk
+-include ra/fsp/src/r_icu/subdir.mk
 -include ra/fsp/src/r_canfd/subdir.mk
 -include ra/fsp/src/r_adc/subdir.mk
 -include ra/fsp/src/bsp/mcu/ra6m5/subdir.mk

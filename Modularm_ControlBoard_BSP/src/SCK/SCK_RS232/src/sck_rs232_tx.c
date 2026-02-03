@@ -15,7 +15,7 @@
 //-------------------------------------- Includes -----------------------------------------------
 #include <SCK/SCK_RS232/includes/sck_rs232_common.h>
 
-/*************************************************************
+/***************************************************************************
  Function Name:  SCK_Send_Response_Parse_Byte(uint8_t tid,
  	 	 	 	 uint16_t status, const uint8_t *payload, uint16_t len)
  Description:    function for sending the response for the message received.
@@ -23,8 +23,8 @@
  	 	 	 	 uint16_t len.
  Outputs:        void.
  Author:		 Keerthi Mallesh
-****************************************************************/
-void SCK_Send_Response(uint8_t tid, uint16_t status, const uint8_t *payload, uint16_t len)
+*****************************************************************************/
+void SCK_RS232_Send_Response(uint8_t tid, uint16_t status, const uint8_t *payload, uint16_t len)
 {
     uint16_t idx = 0;
     uint16_t crc = 0;
@@ -68,7 +68,7 @@ void SCK_Send_Response(uint8_t tid, uint16_t status, const uint8_t *payload, uin
 }
 
 /*************************************************************
- Function Name:  SCK_CRC16_Update_Parse_Byte(uint16_t crc,
+ Function Name:  SCK_CRC16_Update(uint16_t crc,
  	 	 	 	 uint8_t data)
  Description:    function for updating the CRC-16.
  Inputs:         uint8_t byte.
@@ -89,4 +89,24 @@ uint16_t SCK_CRC16_Update(uint16_t crc, uint8_t data)
         ((uint32_t)((crc_low & 0x0F) << 7));
 
     return (uint16_t)(temp & 0xFFFF);
+}
+
+/*************************************************************
+ Function Name:  SCK_RS232_Send_Event_Report(uint16_t oid,
+ 	 	 	 	 uint16_t value)
+ Description:    function for sending event report.
+ Inputs:         uint16_t oid, uint16_t value.
+ Outputs:        void.
+ Author:		 Keerthi Mallesh
+****************************************************************/
+void SCK_RS232_Send_Event_Report(uint16_t oid, uint16_t value)
+{
+	uint8_t payload[4];
+
+	payload[0] = (uint8_t)(oid & 0xFF);
+	payload[1] = (uint8_t)(oid >> 8);
+	payload[2] = (uint8_t)(value & 0xFF);
+	payload[3] = (uint8_t)(value >> 8);
+
+	SCK_RS232_Send_Response(0, SCK_STAT_ID_EVENT_REPORT, payload, sizeof(payload));
 }

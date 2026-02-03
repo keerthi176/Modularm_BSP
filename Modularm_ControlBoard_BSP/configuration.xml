@@ -268,6 +268,10 @@
       <description>FreeRTOS - Memory Management - Heap 1</description>
       <originalPack>Amazon.FreeRTOS-Kernel.11.1.0+fsp.6.2.0.pack</originalPack>
     </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_icu" variant="" vendor="Renesas" version="6.2.0">
+      <description>External Interrupt</description>
+      <originalPack>Renesas.RA.6.2.0.pack</originalPack>
+    </component>
   </raComponentSelection>
   <raElcConfiguration/>
   <raIcuConfiguration/>
@@ -415,6 +419,26 @@
       <property id="module.driver.adc.window_b_ipl" value="_disabled"/>
       <property id="module.driver.adc.adbuf" value="module.driver.adc.adbuf.disabled"/>
     </module>
+    <module id="module.driver.external_irq_on_icu.188097397">
+      <property id="module.driver.external_irq.name" value="door_snesor_interrupt"/>
+      <property id="module.driver.external_irq.channel" value="1"/>
+      <property id="module.driver.external_irq.trigger" value="module.driver.external_irq.trigger.trig_both_edge"/>
+      <property id="module.driver.external_irq.filter_enable" value="module.driver.external_irq.filter_enable.false"/>
+      <property id="module.driver.external_irq.filter_source" value="module.driver.external_irq.filter_source.pclk"/>
+      <property id="module.driver.external_irq.clock_source_div" value="module.driver.external_irq.clock_source_div.clock_source_div_by_64"/>
+      <property id="module.driver.external_irq.p_callback" value="door_sensor_irq_callback"/>
+      <property id="module.driver.external_irq.ipl" value="board.icu.common.irq.priority12"/>
+    </module>
+    <module id="module.driver.external_irq_on_icu.1111606188">
+      <property id="module.driver.external_irq.name" value="motion_detection"/>
+      <property id="module.driver.external_irq.channel" value="11"/>
+      <property id="module.driver.external_irq.trigger" value="module.driver.external_irq.trigger.trig_both_edge"/>
+      <property id="module.driver.external_irq.filter_enable" value="module.driver.external_irq.filter_enable.false"/>
+      <property id="module.driver.external_irq.filter_source" value="module.driver.external_irq.filter_source.pclk"/>
+      <property id="module.driver.external_irq.clock_source_div" value="module.driver.external_irq.clock_source_div.clock_source_div_by_64"/>
+      <property id="module.driver.external_irq.p_callback" value="motion_detection_irq_callback"/>
+      <property id="module.driver.external_irq.ipl" value="board.icu.common.irq.priority12"/>
+    </module>
     <context id="_hal.0">
       <stack module="module.driver.ioport_on_ioport.0"/>
       <stack module="module.middleware.rm_freertos_port.0"/>
@@ -442,6 +466,17 @@
       <property id="rtos.awsfreertos.thread.secure_context" value="rtos.awsfreertos.thread.secure_context.enable"/>
       <stack module="module.driver.uart_on_sci_uart.1544727666"/>
       <stack module="module.driver.uart_on_sci_uart.2115465689"/>
+    </context>
+    <context id="rtos.awsfreertos.thread.1175135821">
+      <property id="_symbol" value="sensor_thread"/>
+      <property id="rtos.awsfreertos.thread.name" value="Sensor_Thread"/>
+      <property id="rtos.awsfreertos.thread.stack" value="1024"/>
+      <property id="rtos.awsfreertos.thread.priority" value="1"/>
+      <property id="rtos.awsfreertos.thread.context" value="NULL"/>
+      <property id="rtos.awsfreertos.thread.allocation" value="rtos.awsfreertos.thread.allocation.static"/>
+      <property id="rtos.awsfreertos.thread.secure_context" value="rtos.awsfreertos.thread.secure_context.enable"/>
+      <stack module="module.driver.external_irq_on_icu.188097397"/>
+      <stack module="module.driver.external_irq_on_icu.1111606188"/>
     </context>
     <config id="config.driver.adc">
       <property id="config.driver.adc.param_checking_enable" value="config.driver.adc.param_checking_enable.bsp"/>
@@ -591,6 +626,9 @@
       <property id="config.driver.ioport.checking" value="config.driver.ioport.checking.system"/>
       <property id="config.driver.ioport.ccd_support_enable" value="config.driver.ioport.ccd_support_enable.disabled"/>
     </config>
+    <config id="config.driver.icu">
+      <property id="config.driver.icu.param_checking_enable" value="config.driver.icu.param_checking_enable.bsp"/>
+    </config>
     <config id="config.awsfreertos.thread">
       <property id="config.awsfreertos.custom_freertosconfig" value=""/>
       <property id="config.awsfreertos.thread.configuse_preemption" value="config.awsfreertos.thread.configuse_preemption.enabled"/>
@@ -661,83 +699,160 @@
     </config>
   </raModuleConfiguration>
   <raPinConfiguration>
-    <symbolicName propertyId="p015.symbolic_name" value="OCCDET1"/>
-    <symbolicName propertyId="p114.symbolic_name" value="HW_VER_1"/>
-    <symbolicName propertyId="p115.symbolic_name" value="HW_VER_2"/>
+    <symbolicName propertyId="p000.symbolic_name" value="THERM_IN"/>
+    <symbolicName propertyId="p014.symbolic_name" value="Door_Heater"/>
+    <symbolicName propertyId="p100.symbolic_name" value="MCU_LED"/>
+    <symbolicName propertyId="p101.symbolic_name" value="IP_IN"/>
+    <symbolicName propertyId="p111.symbolic_name" value="LED3"/>
+    <symbolicName propertyId="p112.symbolic_name" value="LED4"/>
+    <symbolicName propertyId="p113.symbolic_name" value="LED2"/>
     <symbolicName propertyId="p200.symbolic_name" value="RECOVERY_PUSH_BUTTON"/>
-    <symbolicName propertyId="p210.symbolic_name" value="MCU_LED"/>
-    <symbolicName propertyId="p211.symbolic_name" value="CAN_TERM_EN"/>
-    <symbolicName propertyId="p214.symbolic_name" value="HW_VER_0"/>
-    <symbolicName propertyId="p400.symbolic_name" value="LIGHTS_OFF"/>
+    <symbolicName propertyId="p205.symbolic_name" value="SCL1"/>
+    <symbolicName propertyId="p206.symbolic_name" value="SDA1"/>
+    <symbolicName propertyId="p207.symbolic_name" value="RCVRY_PB"/>
+    <symbolicName propertyId="p304.symbolic_name" value="HW_Ver_3"/>
+    <symbolicName propertyId="p305.symbolic_name" value="HW_Ver_2"/>
+    <symbolicName propertyId="p306.symbolic_name" value="HW_Ver_1"/>
+    <symbolicName propertyId="p307.symbolic_name" value="HW_Ver_0"/>
+    <symbolicName propertyId="p400.symbolic_name" value="IP1_HORN"/>
     <symbolicName propertyId="p401.symbolic_name" value="LIGHTS_ON"/>
-    <symbolicName propertyId="p402.symbolic_name" value="ALARM_RLY_ON"/>
+    <symbolicName propertyId="p402.symbolic_name" value="LIGHTS_OFF"/>
     <symbolicName propertyId="p403.symbolic_name" value="ALARM_RLY_OFF"/>
-    <symbolicName propertyId="p404.symbolic_name" value="IP1_BUZZER"/>
-    <symbolicName propertyId="p406.symbolic_name" value="DOOR_IN"/>
-    <symbolicName propertyId="p412.symbolic_name" value="RS485_RTS"/>
-    <symbolicName propertyId="p500.symbolic_name" value="IP_IN"/>
-    <symbolicName propertyId="p608.symbolic_name" value="HW_VER_3"/>
-    <comment propertyId="p015.comment" value="Occupancy Detection"/>
-    <comment propertyId="p114.comment" value="Hardware Revision Bit 1"/>
-    <comment propertyId="p115.comment" value="Hardware Revision Bit 2"/>
+    <symbolicName propertyId="p404.symbolic_name" value="AL_RLYY_ON"/>
+    <symbolicName propertyId="p409.symbolic_name" value="Beeper"/>
+    <symbolicName propertyId="p413.symbolic_name" value="UART0_RTS"/>
+    <symbolicName propertyId="p501.symbolic_name" value="UART5_TX"/>
+    <symbolicName propertyId="p502.symbolic_name" value="UART5_RX"/>
+    <symbolicName propertyId="p503.symbolic_name" value="MCU_CAN_CNTRL"/>
+    <symbolicName propertyId="p504.symbolic_name" value="PWR_SRC"/>
+    <symbolicName propertyId="p505.symbolic_name" value="DOOR_SWITCH"/>
+    <symbolicName propertyId="p609.symbolic_name" value="CAN_TXD"/>
+    <symbolicName propertyId="p610.symbolic_name" value="CAN_RXD"/>
+    <symbolicName propertyId="p708.symbolic_name" value="OCCDET1"/>
+    <comment propertyId="p000.comment" value="THERM_IN"/>
+    <comment propertyId="p014.comment" value="Door_Heater"/>
+    <comment propertyId="p100.comment" value="MCU_LED"/>
+    <comment propertyId="p101.comment" value="Illuminated push button"/>
+    <comment propertyId="p111.comment" value="LED3"/>
+    <comment propertyId="p112.comment" value="LED4"/>
+    <comment propertyId="p113.comment" value="LED2"/>
     <comment propertyId="p200.comment" value="Recovery Push Button"/>
-    <comment propertyId="p210.comment" value="MCU_LED"/>
-    <comment propertyId="p211.comment" value="CAN 120Ω Termination"/>
-    <comment propertyId="p214.comment" value="Hardware Revision Bit 0"/>
-    <comment propertyId="p400.comment" value="AC Lighting Relay - Reset"/>
+    <comment propertyId="p205.comment" value="SCL1"/>
+    <comment propertyId="p206.comment" value="SDA1"/>
+    <comment propertyId="p207.comment" value="RCVRY_PB"/>
+    <comment propertyId="p304.comment" value="HW_Ver_3"/>
+    <comment propertyId="p305.comment" value="HW_Ver_2"/>
+    <comment propertyId="p306.comment" value="HW_Ver_1"/>
+    <comment propertyId="p307.comment" value="HW_Ver_0"/>
+    <comment propertyId="p400.comment" value="IP1_HORN"/>
     <comment propertyId="p401.comment" value="AC Lighting Relay - Set"/>
-    <comment propertyId="p402.comment" value="Alarm Relay - Set"/>
+    <comment propertyId="p402.comment" value="LIGHTS_OFF"/>
     <comment propertyId="p403.comment" value="Alarm Relay - Reset"/>
-    <comment propertyId="p404.comment" value="Piezo Buzzer"/>
-    <comment propertyId="p406.comment" value="Door Magnet Switch"/>
-    <comment propertyId="p412.comment" value="RS-485 Transmit Enable"/>
-    <comment propertyId="p500.comment" value="Generic Digital Input"/>
-    <comment propertyId="p608.comment" value="Hardware Revision Bit 3"/>
+    <comment propertyId="p404.comment" value="AL_RLYY_ON"/>
+    <comment propertyId="p409.comment" value="Beeper"/>
+    <comment propertyId="p413.comment" value="UART0_RTS"/>
+    <comment propertyId="p501.comment" value="UART5_TX"/>
+    <comment propertyId="p502.comment" value="UART5_RX"/>
+    <comment propertyId="p503.comment" value="MCU_CAN_CNTRL"/>
+    <comment propertyId="p504.comment" value="PWR_SRC"/>
+    <comment propertyId="p505.comment" value="Magnetic Door Switch"/>
+    <comment propertyId="p609.comment" value="CAN_TXD"/>
+    <comment propertyId="p610.comment" value="CAN_RXD"/>
+    <comment propertyId="p708.comment" value="OCCDET1"/>
     <pincfg active="true" name="R7FA6M5BF3CFP.pincfg" selected="true" symbol="g_bsp_pin_cfg">
       <configSetting altId="adc0.an00.p000" configurationId="adc0.an00"/>
       <configSetting altId="adc0.an01.p001" configurationId="adc0.an01"/>
       <configSetting altId="adc0.an02.p002" configurationId="adc0.an02"/>
+      <configSetting altId="adc0.an03.p003" configurationId="adc0.an03"/>
+      <configSetting altId="adc0.an04.p004" configurationId="adc0.an04"/>
+      <configSetting altId="adc0.an05.p005" configurationId="adc0.an05"/>
+      <configSetting altId="adc0.an06.p006" configurationId="adc0.an06"/>
+      <configSetting altId="adc0.an07.p007" configurationId="adc0.an07"/>
+      <configSetting altId="adc0.an08.p008" configurationId="adc0.an08"/>
       <configSetting altId="adc0.mode.custom" configurationId="adc0.mode"/>
-      <configSetting altId="can1.crx.p110" configurationId="can1.crx"/>
-      <configSetting altId="can1.ctx.p109" configurationId="can1.ctx"/>
+      <configSetting altId="can1.crx.p610" configurationId="can1.crx"/>
+      <configSetting altId="can1.ctx.p609" configurationId="can1.ctx"/>
       <configSetting altId="can1.mode.enabled.free" configurationId="can1.mode"/>
+      <configSetting altId="dac1.da.p015" configurationId="dac1.da"/>
+      <configSetting altId="dac1.mode.enabled" configurationId="dac1.mode"/>
       <configSetting altId="debug0.mode.swd" configurationId="debug0.mode"/>
       <configSetting altId="debug0.swclk.p300" configurationId="debug0.swclk"/>
       <configSetting altId="debug0.swdio.p108" configurationId="debug0.swdio"/>
+      <configSetting altId="iic0.mode.enabled.b" configurationId="iic0.mode"/>
+      <configSetting altId="iic0.pairing.b" configurationId="iic0.pairing"/>
+      <configSetting altId="iic0.scl.p408" configurationId="iic0.scl"/>
+      <configSetting altId="iic0.sda.p407" configurationId="iic0.sda"/>
+      <configSetting altId="iic1.mode.enabled.b" configurationId="iic1.mode"/>
+      <configSetting altId="iic1.scl.p205" configurationId="iic1.scl"/>
+      <configSetting altId="iic1.sda.p206" configurationId="iic1.sda"/>
       <configSetting altId="iic2.mode.enabled.b" configurationId="iic2.mode"/>
       <configSetting altId="iic2.pairing.b" configurationId="iic2.pairing"/>
       <configSetting altId="iic2.scl.p415" configurationId="iic2.scl"/>
       <configSetting altId="iic2.sda.p414" configurationId="iic2.sda"/>
+      <configSetting altId="irq0.irq01.p101" configurationId="irq0.irq01"/>
+      <configSetting altId="irq0.irq11.p708" configurationId="irq0.irq11"/>
+      <configSetting altId="irq0.irq14.p505" configurationId="irq0.irq14"/>
+      <configSetting altId="irq0.mode.enabled" configurationId="irq0.mode"/>
       <configSetting altId="p000.asel" configurationId="p000"/>
       <configSetting altId="p000.gpio_mode.gpio_mode_an" configurationId="p000.gpio_mode"/>
       <configSetting altId="p001.asel" configurationId="p001"/>
       <configSetting altId="p001.gpio_mode.gpio_mode_an" configurationId="p001.gpio_mode"/>
       <configSetting altId="p002.asel" configurationId="p002"/>
       <configSetting altId="p002.gpio_mode.gpio_mode_an" configurationId="p002.gpio_mode"/>
-      <configSetting altId="p015.input" configurationId="p015"/>
-      <configSetting altId="p015.gpio_mode.gpio_mode_in" configurationId="p015.gpio_mode"/>
-      <configSetting altId="p015.gpio_pupd.gpio_pupd_ip_up" configurationId="p015.gpio_pupd"/>
+      <configSetting altId="p003.asel" configurationId="p003"/>
+      <configSetting altId="p003.gpio_mode.gpio_mode_an" configurationId="p003.gpio_mode"/>
+      <configSetting altId="p004.asel" configurationId="p004"/>
+      <configSetting altId="p004.gpio_mode.gpio_mode_an" configurationId="p004.gpio_mode"/>
+      <configSetting altId="p005.asel" configurationId="p005"/>
+      <configSetting altId="p005.gpio_mode.gpio_mode_an" configurationId="p005.gpio_mode"/>
+      <configSetting altId="p006.asel" configurationId="p006"/>
+      <configSetting altId="p006.gpio_mode.gpio_mode_an" configurationId="p006.gpio_mode"/>
+      <configSetting altId="p007.asel" configurationId="p007"/>
+      <configSetting altId="p007.gpio_mode.gpio_mode_an" configurationId="p007.gpio_mode"/>
+      <configSetting altId="p008.asel" configurationId="p008"/>
+      <configSetting altId="p008.gpio_mode.gpio_mode_an" configurationId="p008.gpio_mode"/>
+      <configSetting altId="p014.output.low" configurationId="p014"/>
+      <configSetting altId="p014.gpio_mode.gpio_mode_out.low" configurationId="p014.gpio_mode"/>
+      <configSetting altId="p015.dac1.da" configurationId="p015"/>
+      <configSetting altId="p015.gpio_mode.gpio_mode_an" configurationId="p015.gpio_mode"/>
+      <configSetting altId="p100.output.low" configurationId="p100"/>
+      <configSetting altId="p100.gpio_mode.gpio_mode_out.low" configurationId="p100.gpio_mode"/>
+      <configSetting altId="p101.irq0.irq01" configurationId="p101"/>
+      <configSetting altId="p101.gpio_irq.gpio_irq_enabled" configurationId="p101.gpio_irq"/>
+      <configSetting altId="p101.gpio_mode.gpio_mode_irq" configurationId="p101.gpio_mode"/>
       <configSetting altId="p108.debug0.swdio" configurationId="p108"/>
       <configSetting altId="p108.gpio_mode.gpio_mode_peripheral" configurationId="p108.gpio_mode"/>
-      <configSetting altId="p109.can1.ctx" configurationId="p109"/>
-      <configSetting altId="p109.gpio_mode.gpio_mode_peripheral" configurationId="p109.gpio_mode"/>
-      <configSetting altId="p110.can1.crx" configurationId="p110"/>
-      <configSetting altId="p110.gpio_mode.gpio_mode_peripheral" configurationId="p110.gpio_mode"/>
-      <configSetting altId="p114.input" configurationId="p114"/>
-      <configSetting altId="p114.gpio_mode.gpio_mode_in" configurationId="p114.gpio_mode"/>
-      <configSetting altId="p115.input" configurationId="p115"/>
-      <configSetting altId="p115.gpio_mode.gpio_mode_in" configurationId="p115.gpio_mode"/>
+      <configSetting altId="p111.output.low" configurationId="p111"/>
+      <configSetting altId="p111.gpio_mode.gpio_mode_out.low" configurationId="p111.gpio_mode"/>
+      <configSetting altId="p112.output.low" configurationId="p112"/>
+      <configSetting altId="p112.gpio_mode.gpio_mode_out.low" configurationId="p112.gpio_mode"/>
+      <configSetting altId="p113.output.low" configurationId="p113"/>
+      <configSetting altId="p113.gpio_mode.gpio_mode_out.low" configurationId="p113.gpio_mode"/>
       <configSetting altId="p200.input" configurationId="p200"/>
       <configSetting altId="p200.gpio_irq.gpio_irq_enabled" configurationId="p200.gpio_irq"/>
       <configSetting altId="p200.gpio_mode.gpio_mode_in" configurationId="p200.gpio_mode"/>
-      <configSetting altId="p210.output.low" configurationId="p210"/>
-      <configSetting altId="p210.gpio_mode.gpio_mode_out.low" configurationId="p210.gpio_mode"/>
-      <configSetting altId="p211.output.low" configurationId="p211"/>
-      <configSetting altId="p211.gpio_mode.gpio_mode_out.low" configurationId="p211.gpio_mode"/>
-      <configSetting altId="p214.input" configurationId="p214"/>
-      <configSetting altId="p214.gpio_mode.gpio_mode_in" configurationId="p214.gpio_mode"/>
+      <configSetting altId="p205.iic1.scl" configurationId="p205"/>
+      <configSetting altId="p205.gpio_speed.gpio_speed_medium" configurationId="p205.gpio_drivecapacity"/>
+      <configSetting altId="p205.gpio_mode.gpio_mode_peripheral" configurationId="p205.gpio_mode"/>
+      <configSetting altId="p206.iic1.sda" configurationId="p206"/>
+      <configSetting altId="p206.gpio_speed.gpio_speed_medium" configurationId="p206.gpio_drivecapacity"/>
+      <configSetting altId="p206.gpio_mode.gpio_mode_peripheral" configurationId="p206.gpio_mode"/>
+      <configSetting altId="p207.input" configurationId="p207"/>
+      <configSetting altId="p207.gpio_mode.gpio_mode_in" configurationId="p207.gpio_mode"/>
       <configSetting altId="p300.debug0.swclk" configurationId="p300"/>
       <configSetting altId="p300.gpio_mode.gpio_mode_peripheral" configurationId="p300.gpio_mode"/>
+      <configSetting altId="p301.sci2.rxd" configurationId="p301"/>
+      <configSetting altId="p301.gpio_mode.gpio_mode_peripheral" configurationId="p301.gpio_mode"/>
+      <configSetting altId="p302.sci2.txd" configurationId="p302"/>
+      <configSetting altId="p302.gpio_mode.gpio_mode_peripheral" configurationId="p302.gpio_mode"/>
+      <configSetting altId="p304.input" configurationId="p304"/>
+      <configSetting altId="p304.gpio_mode.gpio_mode_in" configurationId="p304.gpio_mode"/>
+      <configSetting altId="p305.input" configurationId="p305"/>
+      <configSetting altId="p305.gpio_mode.gpio_mode_in" configurationId="p305.gpio_mode"/>
+      <configSetting altId="p306.input" configurationId="p306"/>
+      <configSetting altId="p306.gpio_mode.gpio_mode_in" configurationId="p306.gpio_mode"/>
+      <configSetting altId="p307.input" configurationId="p307"/>
+      <configSetting altId="p307.gpio_mode.gpio_mode_in" configurationId="p307.gpio_mode"/>
       <configSetting altId="p400.output.low" configurationId="p400"/>
       <configSetting altId="p400.gpio_mode.gpio_mode_out.low" configurationId="p400.gpio_mode"/>
       <configSetting altId="p401.output.low" configurationId="p401"/>
@@ -748,33 +863,50 @@
       <configSetting altId="p403.gpio_mode.gpio_mode_out.low" configurationId="p403.gpio_mode"/>
       <configSetting altId="p404.output.low" configurationId="p404"/>
       <configSetting altId="p404.gpio_mode.gpio_mode_out.low" configurationId="p404.gpio_mode"/>
-      <configSetting altId="p406.input" configurationId="p406"/>
-      <configSetting altId="p406.gpio_mode.gpio_mode_in" configurationId="p406.gpio_mode"/>
-      <configSetting altId="p406.gpio_pupd.gpio_pupd_ip_up" configurationId="p406.gpio_pupd"/>
+      <configSetting altId="p407.iic0.sda" configurationId="p407"/>
+      <configSetting altId="p407.gpio_speed.gpio_speed_medium" configurationId="p407.gpio_drivecapacity"/>
+      <configSetting altId="p407.gpio_mode.gpio_mode_peripheral" configurationId="p407.gpio_mode"/>
+      <configSetting altId="p408.iic0.scl" configurationId="p408"/>
+      <configSetting altId="p408.gpio_speed.gpio_speed_medium" configurationId="p408.gpio_drivecapacity"/>
+      <configSetting altId="p408.gpio_mode.gpio_mode_peripheral" configurationId="p408.gpio_mode"/>
+      <configSetting altId="p409.output.low" configurationId="p409"/>
+      <configSetting altId="p409.gpio_mode.gpio_mode_out.low" configurationId="p409.gpio_mode"/>
       <configSetting altId="p410.sci0.rxd" configurationId="p410"/>
       <configSetting altId="p410.gpio_mode.gpio_mode_peripheral" configurationId="p410.gpio_mode"/>
       <configSetting altId="p411.sci0.txd" configurationId="p411"/>
       <configSetting altId="p411.gpio_mode.gpio_mode_peripheral" configurationId="p411.gpio_mode"/>
-      <configSetting altId="p412.output.low" configurationId="p412"/>
-      <configSetting altId="p412.gpio_mode.gpio_mode_out.low" configurationId="p412.gpio_mode"/>
+      <configSetting altId="p413.output.low" configurationId="p413"/>
+      <configSetting altId="p413.gpio_mode.gpio_mode_out.low" configurationId="p413.gpio_mode"/>
       <configSetting altId="p414.iic2.sda" configurationId="p414"/>
       <configSetting altId="p414.gpio_speed.gpio_speed_medium" configurationId="p414.gpio_drivecapacity"/>
       <configSetting altId="p414.gpio_mode.gpio_mode_peripheral" configurationId="p414.gpio_mode"/>
       <configSetting altId="p415.iic2.scl" configurationId="p415"/>
       <configSetting altId="p415.gpio_speed.gpio_speed_medium" configurationId="p415.gpio_drivecapacity"/>
       <configSetting altId="p415.gpio_mode.gpio_mode_peripheral" configurationId="p415.gpio_mode"/>
-      <configSetting altId="p500.input" configurationId="p500"/>
-      <configSetting altId="p500.gpio_mode.gpio_mode_in" configurationId="p500.gpio_mode"/>
-      <configSetting altId="p500.gpio_pupd.gpio_pupd_ip_up" configurationId="p500.gpio_pupd"/>
       <configSetting altId="p501.sci5.txd" configurationId="p501"/>
       <configSetting altId="p501.gpio_mode.gpio_mode_peripheral" configurationId="p501.gpio_mode"/>
       <configSetting altId="p502.sci5.rxd" configurationId="p502"/>
       <configSetting altId="p502.gpio_mode.gpio_mode_peripheral" configurationId="p502.gpio_mode"/>
-      <configSetting altId="p608.input" configurationId="p608"/>
-      <configSetting altId="p608.gpio_mode.gpio_mode_in" configurationId="p608.gpio_mode"/>
+      <configSetting altId="p503.output.low" configurationId="p503"/>
+      <configSetting altId="p503.gpio_mode.gpio_mode_out.low" configurationId="p503.gpio_mode"/>
+      <configSetting altId="p504.input" configurationId="p504"/>
+      <configSetting altId="p504.gpio_mode.gpio_mode_in" configurationId="p504.gpio_mode"/>
+      <configSetting altId="p505.irq0.irq14" configurationId="p505"/>
+      <configSetting altId="p505.gpio_irq.gpio_irq_enabled" configurationId="p505.gpio_irq"/>
+      <configSetting altId="p505.gpio_mode.gpio_mode_irq" configurationId="p505.gpio_mode"/>
+      <configSetting altId="p609.can1.ctx" configurationId="p609"/>
+      <configSetting altId="p609.gpio_mode.gpio_mode_peripheral" configurationId="p609.gpio_mode"/>
+      <configSetting altId="p610.can1.crx" configurationId="p610"/>
+      <configSetting altId="p610.gpio_mode.gpio_mode_peripheral" configurationId="p610.gpio_mode"/>
+      <configSetting altId="p708.irq0.irq11" configurationId="p708"/>
+      <configSetting altId="p708.gpio_irq.gpio_irq_enabled" configurationId="p708.gpio_irq"/>
+      <configSetting altId="p708.gpio_mode.gpio_mode_irq" configurationId="p708.gpio_mode"/>
       <configSetting altId="sci0.mode.asynchronous.free" configurationId="sci0.mode"/>
       <configSetting altId="sci0.rxd.p410" configurationId="sci0.rxd"/>
       <configSetting altId="sci0.txd.p411" configurationId="sci0.txd"/>
+      <configSetting altId="sci2.mode.asynchronous.free" configurationId="sci2.mode"/>
+      <configSetting altId="sci2.rxd.p301" configurationId="sci2.rxd"/>
+      <configSetting altId="sci2.txd.p302" configurationId="sci2.txd"/>
       <configSetting altId="sci5.mode.asynchronous.free" configurationId="sci5.mode"/>
       <configSetting altId="sci5.rxd.p502" configurationId="sci5.rxd"/>
       <configSetting altId="sci5.txd.p501" configurationId="sci5.txd"/>

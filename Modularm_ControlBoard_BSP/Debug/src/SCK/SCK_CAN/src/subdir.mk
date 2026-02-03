@@ -4,16 +4,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../src/SCK/SCK_CAN/src/sib_manager.c 
+../src/SCK/SCK_CAN/src/can_sck_rx.c \
+../src/SCK/SCK_CAN/src/can_sck_tx.c 
 
 C_DEPS += \
-./src/SCK/SCK_CAN/src/sib_manager.d 
+./src/SCK/SCK_CAN/src/can_sck_rx.d \
+./src/SCK/SCK_CAN/src/can_sck_tx.d 
 
 CREF += \
 Modualrm_BSP.cref 
 
 OBJS += \
-./src/SCK/SCK_CAN/src/sib_manager.o 
+./src/SCK/SCK_CAN/src/can_sck_rx.o \
+./src/SCK/SCK_CAN/src/can_sck_tx.o 
 
 MAP += \
 Modualrm_BSP.map 
