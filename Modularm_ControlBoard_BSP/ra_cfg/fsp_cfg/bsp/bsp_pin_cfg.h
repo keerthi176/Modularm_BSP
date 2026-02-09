@@ -26,7 +26,7 @@ FSP_HEADER
 #define LIGHTS_OFF (BSP_IO_PORT_04_PIN_02) /* LIGHTS_OFF */
 #define ALARM_RLY_OFF (BSP_IO_PORT_04_PIN_03) /* Alarm Relay - Reset */
 #define AL_RLYY_ON (BSP_IO_PORT_04_PIN_04) /* AL_RLYY_ON */
-#define Beeper (BSP_IO_PORT_04_PIN_09) /* Beeper */
+#define BEEPER (BSP_IO_PORT_04_PIN_09) /* Beeper */
 #define UART0_RTS (BSP_IO_PORT_04_PIN_13) /* UART0_RTS */
 #define UART5_TX (BSP_IO_PORT_05_PIN_01) /* UART5_TX */
 #define UART5_RX (BSP_IO_PORT_05_PIN_02) /* UART5_RX */

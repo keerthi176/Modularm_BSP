@@ -16,6 +16,8 @@
 
 #include "Drivers/sensors/motion_detection/includes/motion_detector.h"
 
+//-------------------------------------- Function Definition ---------------------------------------------------
+
 /*************************************************************
  Function Name:  motion_detection_irq_callback(
  	 	 	 	 external_irq_callback_args_t *p_args)

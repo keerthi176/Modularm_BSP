@@ -16,6 +16,8 @@
 
 #include <can_thread.h>
 
+//-------------------------------------- Function Definition -----------------------------------------------
+
 /***************************************************************************
  Function Name:  can_thread_entry(void *pvParameters)
  Description:    entry function for can thread.

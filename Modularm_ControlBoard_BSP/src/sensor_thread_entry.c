@@ -19,8 +19,14 @@
 #include "SCK/includes/sck_protocol.h"
 #include "SCK/SCK_RS232/includes/sck_rs232_common.h"
 #include <Application/door_manager/includes/door_manager.h>
+#include <Application/motion_detector_manager/includes/motion_detector_manager.h>
 
+//=====================================================================================================================
+//-------------------------------------- Global Variables  ------------------------------------------------------------
+//=====================================================================================================================
 QueueHandle_t g_sensor_event_queue;
+
+//-------------------------------------- Function Definition -----------------------------------------------
 
 /***************************************************************************
  Function Name:  sensor_thread_entry(void *pvParameters)
@@ -54,15 +60,7 @@ void sensor_thread_entry(void *pvParameters) {
 					break;
 
 				case SENSOR_ID_MOTION:
-					if(BSP_IO_LEVEL_HIGH == received_event.pin_level)
-					{
-						SCK_RS232_Send_Event_Report(OID_COOLER_MOTION_DETECTION, 1);
-					}
-					else
-					{
-						SCK_RS232_Send_Event_Report(OID_COOLER_MOTION_DETECTION, 0);
-					}
-
+					motion_detection_Handle_Event(&received_event);
 					break;
 
 				default:
@@ -71,6 +69,9 @@ void sensor_thread_entry(void *pvParameters) {
 				}
 			}
 		}
+
+		// todo need to write logic for tempreature send also.
+
 		vTaskDelay(1);
 	}
 }

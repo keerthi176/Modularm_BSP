@@ -9,6 +9,8 @@ extern void uart_thread_create(void);
 extern TaskHandle_t uart_thread;
 extern void sensor_thread_create(void);
 extern TaskHandle_t sensor_thread;
+extern void temp_sensor_create(void);
+extern TaskHandle_t temp_sensor;
 uint32_t g_fsp_common_thread_count;
 bool g_fsp_common_initialized;
 SemaphoreHandle_t g_fsp_common_initialized_semaphore;
@@ -101,6 +103,7 @@ int main(void) {
 	can_thread_create();
 	uart_thread_create();
 	sensor_thread_create();
+	temp_sensor_create();
 
 	/* Start the scheduler. */
 	vTaskStartScheduler();

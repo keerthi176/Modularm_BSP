@@ -30,4 +30,8 @@
 
 #include "SEGGER_RTT/SEGGER_RTT.h"
 
+#include "FreeRTOS.h"
+#include "task.h"
+#include "timers.h"
+
 #endif /* UTILS_COMMON_HEADERS_H_ */

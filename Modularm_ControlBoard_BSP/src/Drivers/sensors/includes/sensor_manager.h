@@ -14,6 +14,7 @@
 #ifndef DRIVERS_SENSORS_INCLUDES_SENSOR_MANAGER_H_
 #define DRIVERS_SENSORS_INCLUDES_SENSOR_MANAGER_H_
 
+#include <Drivers/Relay_Driver/includes/Relay_driver.h>
 #include <utils/includes/common_headers.h>
 #include "sensor_thread.h"
 
@@ -32,7 +33,7 @@ typedef enum e_sensor_id {
 typedef struct s_sensor_event {
 
 	sensor_id_t				sensor_id;
-	bsp_io_level_t 			pin_level;
+	relay_t 				pin_level;
 
 }sensor_event_t;
 

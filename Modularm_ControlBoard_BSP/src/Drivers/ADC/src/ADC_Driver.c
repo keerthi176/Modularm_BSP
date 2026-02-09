@@ -16,30 +16,32 @@
 
 #include <Drivers/ADC/includes/ADC_Driver.h>
 
+//-------------------------------------- Function Definition -----------------------------------------------
+
 /*************************************************************
- Function Name:  ADC_Init(void)
+ Function Name:  adc_driver_init(void)
  Description:    initialization of the ADC.
  Inputs:         NULL.
- Outputs:        void.
+ Outputs:        fsp_err_t.
  Author:		 Keerthi Mallesh
 ****************************************************************/
-void ADC_Init(void)
+fsp_err_t adc_driver_init(void)
 {
-	fsp_err_t err;
+	fsp_err_t err = FSP_SUCCESS;
 
 	err = R_ADC_Open(&g_adc0_ctrl, &g_adc0_cfg);
 	if(FSP_SUCCESS != err)
 	{
-		return;
-	}
-
-	err = R_ADC_ScanCfg(&g_adc0_ctrl, &g_adc0_channel_cfg);
-	if(FSP_SUCCESS != err)
-	{
-		return;
+		// todo Need to implement logic
 	}
 
 	err = R_ADC_ScanStart(&g_adc0_ctrl);
+	if(FSP_SUCCESS != err)
+	{
+		// todo Need to implement logic
+	}
+
+	return FSP_SUCCESS;
 }
 
 /*************************************************************
@@ -47,35 +49,74 @@ void ADC_Init(void)
  	 	 	 	 	 	 float *v12)
  Description:    ADC Read.
  Inputs:         float *temp_volts, float *v24, float *v12.
- Outputs:        void.
+ Outputs:        fsp_err_t.
  Author:		 Keerthi Mallesh
 ****************************************************************/
-void ADC_Read(float *temp_volts, float *v24, float *v12)
+fsp_err_t adc_driver_read_raw(adc_channel_t channel, uint16_t *p_raw_value)
 {
-	uint16_t raw_counts[3];
-
-	R_ADC_Read(&g_adc0_ctrl, ADC_CHANNEL_0, &raw_counts[0]);
-	R_ADC_Read(&g_adc0_ctrl, ADC_CHANNEL_1, &raw_counts[1]);
-	R_ADC_Read(&g_adc0_ctrl, ADC_CHANNEL_2, &raw_counts[2]);
-
-	*temp_volts = (raw_counts[0] * 3.3f) / 4095.0f;
-
-	*v24 = ((raw_counts[1] * 3.3f) / 4095.0f) * 9.66f;
-
-	*v12 = ((raw_counts[2] * 3.3f) / 4095.0f) * 2.0f;
+	return R_ADC_Read(&g_adc0_ctrl, (adc_channel_t)channel, p_raw_value);
 }
 
 /*************************************************************
- Function Name:  adc_callback(adc_callback_args_t *p_args)
- Description:    ADC Callback.
- Inputs:         adc_callback_args_t *p_args.
- Outputs:        void.
+ Function Name:  ADC_Read(float *temp_volts, float *v24,
+ 	 	 	 	 	 	 float *v12)
+ Description:    ADC Read.
+ Inputs:         float *temp_volts, float *v24, float *v12.
+ Outputs:        fsp_err_t.
  Author:		 Keerthi Mallesh
 ****************************************************************/
-void adc_callback(adc_callback_args_t *p_args)
+//fsp_err_t adc_driver_get_temperature_celsius(float *p_temperature_c)
+//{
+//	fsp_err_t err;
+//	adc_raw_data_t raw_adc_value = 0;
+//	float v_adc = 0.0f;
+//	float r_rtd = 0.0f;
+//
+//	err = adc_driver_read_raw(ADC_CHANNEL_TEMP_SENSOR, &raw_adc_value);
+//	if(FSP_SUCCESS != err)
+//	{
+//		return err;
+//	}
+//
+//	v_adc = ((float)raw_adc_value / ADC_MAX_VALUE) * V_REF_VOLTAGE;
+//	if (V_REF_VOLTAGE - v_adc <= 0.001f)
+//	{
+//		return FSP_ERR_INVALID_STATE;
+//	}
+//
+//	r_rtd = ((v_adc * TEMP_SENSOR_R32_OHMS) / (V_REF_VOLTAGE - v_adc)) - TEMP_SENSOR_R35_OHMS - TEMP_SENSOR_R34_OHMS;
+//	if (RTD_R0_OHMS <= 0.0f || RTD_ALPHA <= 0.0f)
+//	{
+//		return FSP_ERR_ASSERTION;
+//	}
+//
+//	*p_temperature_c = ((r_rtd / RTD_R0_OHMS) - 1.0f) / RTD_ALPHA;
+
+//	return FSP_SUCCESS;
+//}
+
+/*************************************************************
+ Function Name:  adc_driver_get_24v_level(float *p_voltage)
+ Description:    adc_driver_get_24v_level.
+ Inputs:         float *p_voltage.
+ Outputs:        fsp_err_t.
+ Author:		 Keerthi Mallesh
+****************************************************************/
+fsp_err_t adc_driver_get_24v_level(float *p_voltage)
 {
-	if(ADC_EVENT_SCAN_COMPLETE == p_args->event )
-	{
-		b_adc_scan_complete = true;
-	}
+	// todo Need to implement the logic
+	return FSP_SUCCESS;
+}
+
+/*************************************************************
+ Function Name:  adc_driver_get_12v_level(float *p_voltage)
+ Description:    adc_driver_get_12v_level.
+ Inputs:         float *p_voltage.
+ Outputs:        fsp_err_t.
+ Author:		 Keerthi Mallesh
+****************************************************************/
+fsp_err_t adc_driver_get_12v_level(float *p_voltage)
+{
+	// todo Need to implement the logic
+	return FSP_SUCCESS;
 }

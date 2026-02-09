@@ -19,6 +19,8 @@
 #include "SCK/SCK_RS232/includes/sck_rs232_common.h"
 #include "Drivers/RS232/includes/RS232_uart.h"
 
+//-------------------------------------- Function Definition -----------------------------------------------
+
 /*************************************************************
  Function Name:  uart_thread_entry(void *pvParameters)
  Description:    entry function for sensor thread.

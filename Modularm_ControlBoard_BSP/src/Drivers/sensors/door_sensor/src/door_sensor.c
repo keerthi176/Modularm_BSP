@@ -16,6 +16,8 @@
 
 #include "Drivers/sensors/door_sensor/includes/door_sensor.h"
 
+//-------------------------------------- Function Definition -----------------------------------------------
+
 /*************************************************************
  Function Name:  door_sensor_get_state(void)
  Description:    door sensor get state.
@@ -63,5 +65,4 @@ void door_sensor_irq_callback(external_irq_callback_args_t *p_args)
 	}
 
 	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
-
 }

@@ -15,6 +15,8 @@
 
 #include <Drivers/EEPROM/includes/eeprom_driver.h>
 
+//-------------------------------------- Function Definition -----------------------------------------------
+
 /*************************************************************
 
  Function Name:  EEPROM_WriteByte(uint32_t memory_address,

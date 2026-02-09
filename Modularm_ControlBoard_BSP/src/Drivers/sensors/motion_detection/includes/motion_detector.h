@@ -11,6 +11,7 @@
 * 				for motion detector.
 *
 *********************************************************************/
+
 #ifndef DRIVERS_SENSORS_MOTION_DETECTION_INCLUDES_MOTION_DETECTOR_H_
 #define DRIVERS_SENSORS_MOTION_DETECTION_INCLUDES_MOTION_DETECTOR_H_
 

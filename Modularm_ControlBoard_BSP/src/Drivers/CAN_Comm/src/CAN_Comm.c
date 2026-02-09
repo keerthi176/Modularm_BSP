@@ -16,6 +16,8 @@
 
 #include <Drivers/CAN_Comm/includes/CAN_Comm.h>
 
+//-------------------------------------- Function Definition -----------------------------------------------
+
 /*************************************************************
 
  Function Name:  CAN_init(void)

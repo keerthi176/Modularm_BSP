@@ -4,7 +4,7 @@
 * modification, are not permitted.
 *
 * Filename:			door_manager.c
-* Creation Date:	Jan 13, 2026
+* Creation Date:	Feb 04, 2026
 * Author:			Keerthi Mallesh
 *
 * Description:	This file is responsible for managing the door feature.
@@ -15,14 +15,13 @@
 
 #include <Application/door_manager/includes/door_manager.h>
 
-
-#define DOOR_OPEN_ALARM_TIMEOUT_MS 10
-
 //=====================================================================================================================
-//-------------------------------------- Static Variables  ---------------------------------------------------------
+//-------------------------------------- Static Variables  ------------------------------------------------------------
 //=====================================================================================================================
-static TimerHandle_t g_door_open_timer = NULL;
-static bool g_is_door_alarm_active = false;
+static TimerHandle_t	g_door_open_timer		= NULL;
+static bool 		 	g_is_door_alarm_active	= false;
+
+//-------------------------------------- Function Definition -----------------------------------------------
 
 /*************************************************************
  Function Name:  Door_Manager_Init(void)
@@ -59,16 +58,16 @@ void Door_Manager_Handle_Event(sensor_event_t *p_event)
 {
 	if(p_event->sensor_id == SENSOR_ID_DOOR )
 	{
-		if(p_event->pin_level == BSP_IO_LEVEL_HIGH )
+		if(p_event->pin_level == TURN_ON )
 		{
-			GPIO_Toggle(LIGHTS_ON);
+//			GPIO_Toggle(LIGHTS_ON);
 
 			xTimerStart(g_door_open_timer, 0);
 			SCK_RS232_Send_Event_Report(OID_COOLER_DOOR_AJAR_ALARM, 1);
 		}
 		else
 		{
-			GPIO_Toggle(LIGHTS_OFF);
+//			GPIO_Toggle(LIGHTS_OFF);
 
 			xTimerStop(g_door_open_timer, 0);
 			if(g_is_door_alarm_active == true)

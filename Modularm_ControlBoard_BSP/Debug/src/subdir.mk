@@ -7,12 +7,14 @@ C_SRCS += \
 ../src/can_thread_entry.c \
 ../src/hal_warmstart.c \
 ../src/sensor_thread_entry.c \
+../src/temp_sensor_entry.c \
 ../src/uart_thread_entry.c 
 
 C_DEPS += \
 ./src/can_thread_entry.d \
 ./src/hal_warmstart.d \
 ./src/sensor_thread_entry.d \
+./src/temp_sensor_entry.d \
 ./src/uart_thread_entry.d 
 
 CREF += \
@@ -22,6 +24,7 @@ OBJS += \
 ./src/can_thread_entry.o \
 ./src/hal_warmstart.o \
 ./src/sensor_thread_entry.o \
+./src/temp_sensor_entry.o \
 ./src/uart_thread_entry.o 
 
 MAP += \

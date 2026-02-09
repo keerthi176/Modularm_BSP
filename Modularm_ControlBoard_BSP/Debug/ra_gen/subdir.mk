@@ -10,6 +10,7 @@ C_SRCS += \
 ../ra_gen/main.c \
 ../ra_gen/pin_data.c \
 ../ra_gen/sensor_thread.c \
+../ra_gen/temp_sensor.c \
 ../ra_gen/uart_thread.c \
 ../ra_gen/vector_data.c 
 
@@ -20,6 +21,7 @@ C_DEPS += \
 ./ra_gen/main.d \
 ./ra_gen/pin_data.d \
 ./ra_gen/sensor_thread.d \
+./ra_gen/temp_sensor.d \
 ./ra_gen/uart_thread.d \
 ./ra_gen/vector_data.d 
 
@@ -33,6 +35,7 @@ OBJS += \
 ./ra_gen/main.o \
 ./ra_gen/pin_data.o \
 ./ra_gen/sensor_thread.o \
+./ra_gen/temp_sensor.o \
 ./ra_gen/uart_thread.o \
 ./ra_gen/vector_data.o 
 
